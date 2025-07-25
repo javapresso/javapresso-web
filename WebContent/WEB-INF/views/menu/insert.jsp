@@ -8,7 +8,7 @@
 </head>
 <body>
 	<util:layout  menuList="${menuList}">
-		<h2>이곳은 insert 폼입니다.</h2>
+		<h2>이곳이 컨텐트입니다.</h2>
 	</util:layout>
 </body>
 </html>

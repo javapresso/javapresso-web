@@ -1,0 +1,14 @@
+.container {
+  width: 1180px;
+  height: 820px;
+  margin: 0 auto;
+  display: flex;
+  background: var(--main-bg);
+}
+
+.content {
+  flex: 1;
+  padding: 60px 40px;
+  display: flex;
+  flex-direction: column;
+}
