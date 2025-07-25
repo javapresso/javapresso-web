@@ -5,10 +5,23 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+
 import org.apache.tomcat.jdbc.pool.DataSource;
 
 public class EmployeeDao {
-	static DataSource dataSource;
+	static DataSource dataSource = null;
+	
+	static {
+		try {
+			Context context = new InitialContext();
+			dataSource = (DataSource)context.lookup("java:comp/env/jdbc/Oracle");
+		} catch (NamingException e) {
+			e.printStackTrace();
+		}
+	}
 	
 	public int insertEmployee(String name, String phone, String title, String salary) {
 		try (Connection con = dataSource.getConnection()) {

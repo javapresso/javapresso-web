@@ -8,10 +8,23 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+
 import org.apache.tomcat.jdbc.pool.DataSource;
 
 public class MenuDao {
-	static DataSource dataSource;
+	static DataSource dataSource = null;
+	
+	static {
+		try {
+			Context context = new InitialContext();
+			dataSource = (DataSource)context.lookup("java:comp/env/jdbc/Oracle");
+		} catch (NamingException e) {
+			e.printStackTrace();
+		}
+	}
 
 	public List<String> getMenuHeader() {
 
