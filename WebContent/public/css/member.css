@@ -1,0 +1,14 @@
+.image-area {
+	display: flex;
+	flex-direction: column;
+}
+
+.image-box {
+	background-color: #D9D9D9;
+	width: 194px;
+	height: 194px;
+	border: none;
+	display: flex;
+	juetify-contetn: center;
+	item-aligns: center;
+}
