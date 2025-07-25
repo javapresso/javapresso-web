@@ -1,6 +1,6 @@
 .container {
   width: 1180px;
-  height: 820px;
+  max-height: 820px;
   margin: 0 auto;
   display: flex;
   background: var(--main-bg);

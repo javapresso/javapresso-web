@@ -12,8 +12,12 @@ public class MenuInsertGetHandler implements CommandHandler {
 	public String process(HttpServletRequest request, HttpServletResponse response) {
 		ArrayList<SideMenuItem> menuList = new ArrayList<>();
 		
-		menuList.add(new SideMenuItem("메뉴 조회하기", "/menu/select"));
+		menuList.add(new SideMenuItem("메뉴 조회하기", "/menu/selectform"));
 		menuList.add(new SideMenuItem("메뉴 추가하기", "/menu/insertform"));
+		menuList.add(new SideMenuItem("메뉴 수정하기", "/menu/updateform"));
+		menuList.add(new SideMenuItem("메뉴 삭제하기", "/menu/deleteform"));
+		
+		request.setAttribute("menuList", menuList);
 		
 		return "menu/insert.jsp";
 	}

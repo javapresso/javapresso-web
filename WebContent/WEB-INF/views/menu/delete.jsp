@@ -10,7 +10,7 @@
 	</head>
 	<body>
 		<util:layout menuList="${menuList}">
-			<h2>이곳은 메뉴 상세 조회 페이지입니다.</h2>
+			<h2>이곳은 메뉴 삭제 페이지입니다.</h2>
 		</util:layout>
 		<script src="${pageContext.request.contextPath}/resources/js/member.js"></script>
 	</body>
