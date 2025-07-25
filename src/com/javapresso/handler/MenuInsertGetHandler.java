@@ -21,8 +21,8 @@ public class MenuInsertGetHandler implements CommandHandler {
 		menuList.add(new SideMenuItem("메뉴 수정하기", "/menu/updateform"));
 		menuList.add(new SideMenuItem("메뉴 삭제하기", "/menu/deleteform"));
 		
-		request.setAttribute("menuList", menuList);
 		request.setAttribute("parentMenus", categories);
+		request.setAttribute("menuList", menuList);
 		
 		System.out.println("categories " + categories);
 	    for(String category : categories) {
