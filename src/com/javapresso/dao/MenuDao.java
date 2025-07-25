@@ -54,9 +54,25 @@ public class MenuDao {
 		}
 	}
 
-	public List<String> getParentCategories () {
-		List<String> categories = new ArrayList<>();
-
+	public ArrayList<String> getParentCategories () {
+		ArrayList<String> categories = new ArrayList<>();
+//		=======
+//				ArrayList<String> categories = new ArrayList<>();
+//			    Connection con = null;
+//			    PreparedStatement stmt = null;
+//			    ResultSet rs = null;
+//			    String sql = "SELECT category_name FROM categories WHERE parent_name IS NULL";
+//			
+//			    try {
+//			        con = ds.getConnection();
+//			        if (con == null) {
+//			            throw new RuntimeException("Database connection is null");
+//			        }
+//			        
+//					stmt = con.prepareStatement(sql);
+//					rs = stmt.executeQuery();
+//					
+//		>>>>>>> Stashed changes
 		try (Connection con = dataSource.getConnection()) {
 
 			String sql = "SELECT category_name "
@@ -65,6 +81,7 @@ public class MenuDao {
 
 			PreparedStatement stmt = con.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
+
 
 			while(rs.next()) categories.add(rs.getString("category_name"));
 
@@ -75,8 +92,8 @@ public class MenuDao {
 		}
 	}
 
-	public List<String> getChildCategories (String parent) {
-		List<String> subCategories = new ArrayList<>();
+	public ArrayList<String> getChildCategories (String parent) {
+		ArrayList<String> subCategories = new ArrayList<>();
 
 		try (Connection con = dataSource.getConnection()) {
 
@@ -87,11 +104,22 @@ public class MenuDao {
 					+    "CONNECT BY PRIOR category_name = parent_name) "
 					+ "WHERE parent_name = ?";
 
+//=======
+//		
+//		Connection con = ds.getConnection();
+//		String sql = "SELECT category_name FROM"
+//				+  "(SELECT category_name, parent_name, LEVEL "
+//				+    "FROM categories "
+//				+    "START WITH parent_name IS NULL "
+//				+    "CONNECT BY PRIOR category_name = parent_name) "
+//			    + "WHERE parent_name = ?";
+//		
+//		try {
+//>>>>>>> Stashed changes
 			PreparedStatement stmt = con.prepareStatement(sql);
 
 			stmt.setString(1, parent);
 			ResultSet rs = stmt.executeQuery();
-
 
 			while(rs.next()) subCategories.add(rs.getString("category_name"));
 

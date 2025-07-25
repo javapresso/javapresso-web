@@ -1,5 +1,5 @@
 .sidebar{
-	max-height:820px;
+	height:820px;
 	width:245px;   
 	background:var(--sidebar-bg);
 	padding:30px 16px;
@@ -24,6 +24,7 @@
 .sidebar_item {
 	width: 100%;
 	padding: 15px 0;
+	height: 84px;
 	font: 500 24px/28px 'Gmarket Sans TTF', sans-serif;
 	color: #fff;
 	background: none;
