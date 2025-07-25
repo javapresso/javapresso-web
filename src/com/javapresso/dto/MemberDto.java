@@ -1,10 +1,9 @@
 package com.javapresso.dto;
-import java.sql.Date;
 
 import lombok.Data;
 
 @Data
-public class Member{
+public class MemberDto{
 	private String customerId;
 	private int stamp;
 	private int coupon;

@@ -1,9 +1,9 @@
 package com.javapresso.dto;
-import java.sql.Date;
+
 import lombok.Data;
 
 @Data
-public class Menu {
+public class MenuDto {
 	private String categoryName;
 	private String menuName;
 	private int price;
