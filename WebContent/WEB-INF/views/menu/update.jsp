@@ -9,8 +9,8 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/member.css" />
 	</head>
 	<body>
-		<util:layout menuList="${menuList}">
-			<h2>이곳은 메뉴 상세 조회 페이지입니다.</h2>
+		<util:layout  menuList="${menuList}">
+			<h2>이곳은 메뉴 업데이트 페이지입니다.</h2>
 		</util:layout>
 		<script src="${pageContext.request.contextPath}/resources/js/member.js"></script>
 	</body>

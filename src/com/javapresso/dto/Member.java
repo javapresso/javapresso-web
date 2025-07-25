@@ -1,5 +1,4 @@
 package com.javapresso.dto;
-import java.sql.Date;
 
 import lombok.Data;
 
