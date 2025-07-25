@@ -1,0 +1,16 @@
+:root{
+  --main-bg:#F7F7F7;
+  --sidebar-bg:#5E4B4B;
+  --highlight:#FBEAEC;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+  font-family:'Gmarket Sans TTF','Noto Sans KR',sans-serif;
+  background:var(--main-bg);
+}
