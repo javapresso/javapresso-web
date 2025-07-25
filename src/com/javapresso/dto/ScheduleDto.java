@@ -1,10 +1,11 @@
 package com.javapresso.dto;
+
 import java.sql.Date;
 
 import lombok.Data;
 
 @Data
-public class Schedule {
+public class ScheduleDto {
 	private int scheduleId;
 	private int employeeId;
 	private Date startTime;

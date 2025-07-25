@@ -1,9 +1,9 @@
 package com.javapresso.dto;
-import java.sql.Date;
+
 import lombok.Data;
 
 @Data
-public class Employee {
+public class EmployeeDto {
 	private int employeeId;
 	private String employeeName;
 	private String phoneNumber;

@@ -1,14 +1,11 @@
 package com.javapresso.utils;
 
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.Scanner;
 
-import com.javapresso.dao.DataSource;
 import com.javapresso.dao.EmployeeDao;
 
 public class EmployeeUI {
-	DataSource ds = new DataSource();
 	EmployeeDao empDao = new EmployeeDao();
 	RenderSystem renderSys = new RenderSystem();
 	
@@ -36,7 +33,7 @@ public class EmployeeUI {
 	}
 	
 	// 1. 새로운 직원 정보 등록하기
-	public void insertEmployee(Connection con, Scanner read) {
+	public void insertEmployee(Scanner read) {
 		try {
 			// 신규 직원의 이름, 전화번호, 직급, 급여를 저장할 변수
 			String inputName;
@@ -107,9 +104,7 @@ public class EmployeeUI {
 			}
 			
 			// 입력받은 정보를 DB에 추가
-			con = ds.getConnection();
-			
-			int successInsert = empDao.insertEmployee(con, inputName, inputPhoneNumber, inputTitle, inputSalary);
+			int successInsert = empDao.insertEmployee(inputName, inputPhoneNumber, inputTitle, inputSalary);
 			if (successInsert == 1) {
 				renderSys.printStatus("새로운 직원 정보 등록이 완료되었습니다.", true);
 				renderSys.printEmptyLine(2);
@@ -120,17 +115,14 @@ public class EmployeeUI {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			renderSys.printEmptyLine(2);
-		} finally {
-			ds.closeConnection(con);
 		}
 	}
 	
 	// 2. 등록된 모든 직원정보 조회 및 출력
-	public void getEmployeeAll(Connection con, Scanner read) {
+	public void getEmployeeAll(Scanner read) {
 		try {
 			// DB에서 모든 직원정보 불러오기
-			con = ds.getConnection();
-			ResultSet rs = empDao.getEmployeeAll(con);
+			ResultSet rs = empDao.getEmployeeAll();
 			
 			// 부제목 출력
 			renderSys.printSubTitle(renderSys.WIDTH, "전체 직원정보 조회");
@@ -169,13 +161,11 @@ public class EmployeeUI {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			renderSys.printEmptyLine(2);
-		} finally {
-			ds.closeConnection(con);
 		}
 	}
 	
 	// 3. 기존 직원정보 수정하기
-	public void updateEmployee(Connection con, Scanner read) {
+	public void updateEmployee(Scanner read) {
 		try {
 			// 직원 정보를 수정에 성공할 때까지 반복
 			while (true) {
@@ -190,7 +180,7 @@ public class EmployeeUI {
 				// 입력 확인
 				if (targetId.equals("q") || targetId.equals("Q") || targetId.equals("ㅂ")) { return; }
 				else if (targetId.equals("r") || targetId.equals("R") || targetId.equals("ㄱ")) {
-					this.getEmployeeAll(con, read);
+					this.getEmployeeAll(read);
 					continue;
 				} else if (!this.isNumber(targetId)) {
 					renderSys.printInvalidInput();
@@ -199,8 +189,7 @@ public class EmployeeUI {
 				}
 
 				// 수정할 직원 정보 조회
-				con = ds.getConnection();
-				ResultSet targetEmp = empDao.getEmployee(con, targetId);
+				ResultSet targetEmp = empDao.getEmployee(targetId);
 				
 				// 수정할 직원 정보 조회 실패
 				if (!targetEmp.next()) { 
@@ -233,7 +222,7 @@ public class EmployeeUI {
 						renderSys.printEmptyLine(2);
 						
 						// DB에서 직원의 이름 수정
-						successUpdate = empDao.updateEmployeeName(con, targetId, newName);
+						successUpdate = empDao.updateEmployeeName(targetId, newName);
 						break;
 					case "2":
 						// 수정할 전화번호 입력받기
@@ -242,7 +231,7 @@ public class EmployeeUI {
 						renderSys.printEmptyLine(2);
 						
 						// DB에서 직원의 전화번호 수정
-						successUpdate = empDao.updateEmployeePhone(con, targetId, newPhone);
+						successUpdate = empDao.updateEmployeePhone(targetId, newPhone);
 						break;
 					case "3":
 						// 수정할 급여 입력받기
@@ -251,7 +240,7 @@ public class EmployeeUI {
 						renderSys.printEmptyLine(2);
 						
 						// DB에서 직원의 급여 수정
-						successUpdate = empDao.updateEmployeeSalary(con, targetId, newSalary);
+						successUpdate = empDao.updateEmployeeSalary(targetId, newSalary);
 						break;
 					case "4":
 						// 수정할 직급 입력받기
@@ -260,7 +249,7 @@ public class EmployeeUI {
 						renderSys.printEmptyLine(2);
 						
 						// DB에서 직원의 직급 수정
-						successUpdate = empDao.updateEmployeeTitle(con, targetId, newTitle);
+						successUpdate = empDao.updateEmployeeTitle(targetId, newTitle);
 						break;
 					case "5":
 						String newManagerId = "";
@@ -271,7 +260,7 @@ public class EmployeeUI {
 							renderSys.printEmptyLine(2);
 							
 							// 입력한 ID의 관리자가 있는지 확인
-							ResultSet managerEmp = empDao.getEmployee(con, newManagerId);
+							ResultSet managerEmp = empDao.getEmployee(newManagerId);
 							if (!managerEmp.next()) { 
 								System.out.println("수정하려는 ID의 매니저가 존재하지 않습니다.");
 								renderSys.printEmptyLine(2);
@@ -281,7 +270,7 @@ public class EmployeeUI {
 						}
 						
 						// DB에서 직원의 관리자 아이디 수정
-						successUpdate = empDao.updateEmployeeManager(con, targetId, newManagerId);
+						successUpdate = empDao.updateEmployeeManager(targetId, newManagerId);
 						break;
 					default:
 						// 잘못된 형식의 입력 알림
@@ -303,78 +292,76 @@ public class EmployeeUI {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			renderSys.printEmptyLine(2);
-		} finally {
-			ds.closeConnection(con);
 		}
 	}
 	
-	// 4. 퇴사한 직원 정보 삭제하기
-	public void deleteEmployee(Connection con, Scanner read) {
-		try {
-			while (true) {
-				// 제목 출력하기
-				renderSys.printTitle(renderSys.WIDTH, "직원 정보 삭제 - 삭제할 직원 선정");
-				
-				// 삭제할 직원 아이디 입력받기
-				renderSys.printInputFormMessage("삭제할 직원의 아이디를 입력해주세요. (Q: 이전으로, R: 직원 ID 조회하기)");
-				String targetId = read.nextLine();
-				renderSys.printEmptyLine(2);
-				
-				// 입력 확인
-				if (targetId.equals("q") || targetId.equals("Q") || targetId.equals("ㅂ")) { return; }
-				else if (targetId.equals("r") || targetId.equals("R") || targetId.equals("ㄱ")) {
-					this.getEmployeeAll(con, read);
-					continue;
-				} else if (!this.isNumber(targetId)) {
-					renderSys.printInvalidInput();
-					renderSys.printEmptyLine(2);
-					continue;
-				}
-				
-				// DB 연결
-				con = ds.getConnection();
-
-				// 삭제할 직원이 있는지 확인
-				ResultSet targetEmp = empDao.getEmployee(con, targetId);
-				if (!targetEmp.next()) { 
-					renderSys.printStatus("삭제하려는 ID의 직원이 존재하지 않습니다.", false);
-					renderSys.printEmptyLine(2);
-					continue;
-				}
-				
-				// 삭제할 직원을 관리자로 둔 직원이 있는지 확인
-				ResultSet checkManager = empDao.checkManager(con, targetId);
-				if (checkManager.next()) {
-					renderSys.printStatus("삭제하려는 ID의 직원은 관리중인 직원이 있습니다.", false);
-					renderSys.printStatus("다른 직원에게 인수인계 후 삭제가 가능합니다.", false);
-					renderSys.printEmptyLine(2);
-					continue;
-				}
-				
-				// 삭제할 직원의 스케쥴 삭제 및 직원 정보 삭제
-				con.setAutoCommit(false);
-				empDao.deleteEmployeeSchedule(con, targetId);
-				int successDelete = empDao.deleteEmployee(con, targetId);
-				
-				// 직원 정보 삭제 성공시 탈출
-				if (successDelete == 1) {
-					con.commit();
-					renderSys.printStatus("직원 정보 삭제가 완료되었습니다.", true);
-					renderSys.printEmptyLine(2);
-					return;
-				} else {
-					con.rollback();
-					renderSys.printStatus("직원 정보 삭제에 실패했습니다.", false);
-					renderSys.printEmptyLine(2);
-				}
-			}
-		} catch (Exception e) {
-			try { con.rollback(); } catch (Exception e2) { }
-			System.out.println(e.getMessage());
-			renderSys.printEmptyLine(2);
-		} finally {
-			try { con.setAutoCommit(true); } catch (Exception e) { }
-			ds.closeConnection(con);
-		}
-	}
+//	// 4. 퇴사한 직원 정보 삭제하기
+//	public void deleteEmployee(Scanner read) {
+//		try {
+//			while (true) {
+//				// 제목 출력하기
+//				renderSys.printTitle(renderSys.WIDTH, "직원 정보 삭제 - 삭제할 직원 선정");
+//				
+//				// 삭제할 직원 아이디 입력받기
+//				renderSys.printInputFormMessage("삭제할 직원의 아이디를 입력해주세요. (Q: 이전으로, R: 직원 ID 조회하기)");
+//				String targetId = read.nextLine();
+//				renderSys.printEmptyLine(2);
+//				
+//				// 입력 확인
+//				if (targetId.equals("q") || targetId.equals("Q") || targetId.equals("ㅂ")) { return; }
+//				else if (targetId.equals("r") || targetId.equals("R") || targetId.equals("ㄱ")) {
+//					this.getEmployeeAll(con, read);
+//					continue;
+//				} else if (!this.isNumber(targetId)) {
+//					renderSys.printInvalidInput();
+//					renderSys.printEmptyLine(2);
+//					continue;
+//				}
+//				
+//				// DB 연결
+//				con = ds.getConnection();
+//
+//				// 삭제할 직원이 있는지 확인
+//				ResultSet targetEmp = empDao.getEmployee(con, targetId);
+//				if (!targetEmp.next()) { 
+//					renderSys.printStatus("삭제하려는 ID의 직원이 존재하지 않습니다.", false);
+//					renderSys.printEmptyLine(2);
+//					continue;
+//				}
+//				
+//				// 삭제할 직원을 관리자로 둔 직원이 있는지 확인
+//				ResultSet checkManager = empDao.checkManager(con, targetId);
+//				if (checkManager.next()) {
+//					renderSys.printStatus("삭제하려는 ID의 직원은 관리중인 직원이 있습니다.", false);
+//					renderSys.printStatus("다른 직원에게 인수인계 후 삭제가 가능합니다.", false);
+//					renderSys.printEmptyLine(2);
+//					continue;
+//				}
+//				
+//				// 삭제할 직원의 스케쥴 삭제 및 직원 정보 삭제
+//				con.setAutoCommit(false);
+//				empDao.deleteEmployeeSchedule(con, targetId);
+//				int successDelete = empDao.deleteEmployee(con, targetId);
+//				
+//				// 직원 정보 삭제 성공시 탈출
+//				if (successDelete == 1) {
+//					con.commit();
+//					renderSys.printStatus("직원 정보 삭제가 완료되었습니다.", true);
+//					renderSys.printEmptyLine(2);
+//					return;
+//				} else {
+//					con.rollback();
+//					renderSys.printStatus("직원 정보 삭제에 실패했습니다.", false);
+//					renderSys.printEmptyLine(2);
+//				}
+//			}
+//		} catch (Exception e) {
+//			try { con.rollback(); } catch (Exception e2) { }
+//			System.out.println(e.getMessage());
+//			renderSys.printEmptyLine(2);
+//		} finally {
+//			try { con.setAutoCommit(true); } catch (Exception e) { }
+//			ds.closeConnection(con);
+//		}
+//	}
 }
