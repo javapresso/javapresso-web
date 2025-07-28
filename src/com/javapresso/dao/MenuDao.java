@@ -153,7 +153,7 @@ public class MenuDao {
 	}
 
 	// 메뉴 등록하기
-	public void insertMenu (String subCategory, String menuName, int price, String description, int iceable) {
+	public void insertMenu (String subCategory, String menuName, int price, String description, int iceable, String filePath) {
 		Connection con = null;
 
 		try {
@@ -161,8 +161,8 @@ public class MenuDao {
 			con.setAutoCommit(false);
 
 			String sql = "INSERT INTO menus ("
-					+ "category_name, menu_name, price, description, iceable, is_soldout"
-					+ ") VALUES (?, ?, ?, ?, ?, 0)";
+					+ "category_name, menu_name, price, description, iceable, is_soldout, thumbnail_path"
+					+ ") VALUES (?, ?, ?, ?, ?, 0, ?)";
 
 			PreparedStatement stmt = con.prepareStatement(sql);
 
@@ -171,6 +171,7 @@ public class MenuDao {
 			stmt.setInt(3, price);
 			stmt.setString(4, description);
 			stmt.setInt(5, iceable);
+			stmt.setString(6, filePath);
 
 			int insertMenuCount = stmt.executeUpdate();
 

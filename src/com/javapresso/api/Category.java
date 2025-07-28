@@ -10,12 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
-import com.javapresso.service.CategoryApiService;
+import com.javapresso.service.MenuService;
 
 @WebServlet("/api/menu/subcategories")
 public class Category extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private CategoryApiService service = new CategoryApiService();
+    private MenuService service = new MenuService();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	System.out.println("get 요청 들어옴!");
