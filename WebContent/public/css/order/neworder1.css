@@ -1,0 +1,191 @@
+@charset "UTF-8";
+
+ :root {
+      --main-bg: #F7F7F7;
+      --sidebar-bg: #5E4B4B;
+      --highlight: #FBEAEC;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Gmarket Sans TTF', 'Noto Sans KR', sans-serif;
+      background: var(--main-bg);
+    }
+
+    .container {
+      width: 1180px;
+      height: 820px;
+      margin: 0 auto;
+      display: flex;
+      background: var(--main-bg);
+    }
+
+    .sidebar {
+      width: 245px;
+      background: var(--sidebar-bg);
+      padding: 30px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .sidebar_logo {
+      width: 213px;
+      height: 45px;
+      object-fit: contain;
+    }
+
+    .sidebar_menu {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sidebar_item {
+      width: 100%;
+      padding: 15px 0;
+      font: 500 24px/28px 'Gmarket Sans TTF', sans-serif;
+      color: #fff;
+      background: none;
+      border: none;
+      cursor: pointer;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .sidebar_item:hover {
+      background-color: #7a6363;
+      color: #fff;
+    }
+
+    .sidebar_item.is-active {
+      background-color: #D95A6F;
+      color: #fff;
+      font-weight: bold;
+    }
+
+    .content {
+      flex: 1;
+      padding: 60px 60px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* 큰 카테고리 타이틀 */
+    .big-category {
+      font-weight: 700;
+      font-size: 32px;
+      line-height: 37px;
+      width: 100%;
+      margin-bottom: 3%;
+    }
+
+    /* 작은 카테고리 타이틀 - 필요시 추가 가능 */
+
+    .buttongroup {
+      display: flex;
+      gap: 57px;
+      width: 534px;
+    }
+
+    .big-category-button,
+    .small-category-button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 7px 40px;
+      gap: 10px;
+      width: 140px;
+      height: 43px;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 23px;
+      border-radius: 20px;
+      cursor: pointer;
+      user-select: none;
+      background-color: #F7F7F7;
+      border: 1px solid #5E4B4B;
+      transition: background-color 0.3s;
+    }
+
+    .big-category-button:hover,
+    .small-category-button:hover {
+      background: #D95A6F;
+      color: white;
+    }
+
+    .big-category-button.active,
+    .small-category-button.active {
+      background: #D95A6F;
+      color: white;
+      font-weight: 700;
+    }
+
+    .selectcategory {
+      font-weight: 700;
+      font-size: 32px;
+      line-height: 37px;
+      width: 100%;
+      margin-top: 4%;
+      margin-bottom: 3%;
+    }
+
+    /* 메뉴 리스트 2열 정렬 */
+    .menu-list {
+      width: 796px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+    }
+
+    .menu-card {
+      display: flex;
+      background: #fff;
+      border: 2px solid rgba(94, 75, 75, 0.3);
+      border-radius: 20px;
+      padding: 25px 22px;
+      gap: 23px;
+      height: 172px;
+    }
+
+    .menu-img {
+      width: 118px;
+      height: 118px;
+      border-radius: 20px;
+      background-color: #ddd;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 14px;
+      color: #666;
+    }
+
+    .menu-name {
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 28px;
+      color: #000;
+    }
+
+    .menu-price {
+      font-weight: 700;
+      font-size: 17px;
+      line-height: 20px;
+      color: #FF0000;
+      margin-top: 6px;
+    }
+
+    .menu-info {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 16px;
+      color: #000;
+      margin-top: 6px;
+      width: 183px;
+    }
