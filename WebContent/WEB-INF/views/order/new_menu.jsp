@@ -1,77 +1,55 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<%@ taglib prefix="util" tagdir="/WEB-INF/tags"%>
+<%@ include file="/WEB-INF/views/common/header.jsp"%>
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/public/css/order/neworder1.css" />
-<title>JavaPresso</title>
+	href="${pageContext.request.contextPath}/public/css/order/orderform1.css" />
+<util:layout menuList="${sideMenus}">
 
-<link href="https://fonts.googleapis.com/css2?family=Itim&display=swap"
-	rel="stylesheet">
-<link href="gmarket-sans.css" rel="stylesheet">
-</head>
-<body>
-	<div class="container">
-		<aside class="sidebar">
-			<img src="${pageContext.request.contextPath}/public/images/logo.png" alt="JavaPresso" class="sidebar_logo" />
+	<div class="big-category">Categories</div>
+	<div class="buttongroup big-category-group">
+		<c:forEach var="parentCategory" items="${parentName}">
+			<form method="get" action="order.do">
+				<input type="hidden" name="parent" value="${parentName}" />
+				<button type="submit"
+					class="big-category-button ${parentName eq selectedBig ? 'active' : ''}">
+					${parentName}</button>
+			</form>
+		</c:forEach>
+	</div>
 
-			<nav class="sidebar_menu">
-				<button class="sidebar_item" id="menuboard" onclick="menuboard()">메뉴판</button>
-				<button class="sidebar_item  is-active" id="order" onclick="order()">주문하기</button>
-				<button class="sidebar_item" id="points" onclick="points()">쿠폰 확인</button>
-				<button class="sidebar_item" id="points" onclick="points()">주문내역 조회</button>
-				<button class="sidebar_item" id="points" onclick="points()">주문 삭제</button>
-			</nav>
-		</aside>
+	<div class="small-category">
+		<div class="buttongroup small-category-group">
+			<c:forEach var="child" items="${categoryName}">
+				<form method="get" action="order.do">
+					<input type="hidden" name="parent" value="${selectedBig}" /> <input
+						type="hidden" name="child" value="${categoryName}" />
+					<button type="submit"
+						class="small-category-button ${categoryName eq selectedSmall ? 'active' : ''}">
+						${categoryName}</button>
+				</form>
+			</c:forEach>
+		</div>
+	</div>
 
-		<div class="content">
-			<div class="big-category">Categories</div>
-			<div class="buttongroup big-category-group">
-				<c:forEach var="parentCategory" items="${parentName}">
-					<form method="get" action="order.do">
-						<input type="hidden" name="parent" value="${parentName}" />
-						<button type="submit"
-							class="big-category-button ${parentName eq selectedBig ? 'active' : ''}">
-							${parentName}</button>
-					</form>
-				</c:forEach>
-			</div>
+	<div class="selectcategory">선택된 카테고리: ${parentName} >
+		${categoryName}</div>
 
-			<div class="small-category">
-				<div class="buttongroup small-category-group">
-					<c:forEach var="child" items="${categoryName}">
-						<form method="get" action="order.do">
-							<input type="hidden" name="parent" value="${selectedBig}" /> <input
-								type="hidden" name="child" value="${categoryName}" />
-							<button type="submit"
-								class="small-category-button ${categoryName eq selectedSmall ? 'active' : ''}">
-								${categoryName}</button>
-						</form>
-					</c:forEach>
+	<div class="menu-list">
+		<c:forEach var="menu" items="${menuList}">
+			<div class="menu-card">
+				<div class="menu-img">이미지</div>
+				<div class="menu-text">
+					<div class="menu-name">${menu.menuName}</div>
+					<div class="menu-price">${menu.price}원</div>
+					<div class="menu-info">${menu.description}</div>
 				</div>
 			</div>
+		</c:forEach>
+	</div>
 
-			<div class="selectcategory">선택된 카테고리: ${parentName} >
-				${categoryName}</div>
-
-			<div class="menu-list">
-				<c:forEach var="menu" items="${menuList}">
-					<div class="menu-card">
-						<div class="menu-img">이미지</div>
-						<div class="menu-text">
-							<div class="menu-name">${menu.menuName}</div>
-							<div class="menu-price">${menu.price}원</div>
-							<div class="menu-info">${menu.description}</div>
-						</div>
-					</div>
-				</c:forEach>
-			</div>
-
-		</div>
+	</div>
 	</div>
 
 	<!-- <script>
@@ -201,4 +179,6 @@
     // 초기화
     updateSmallCategories(selectedBigCategory);
   </script> -->
-</body>
+</util:layout>
+
+<%@ include file="/WEB-INF/views/common/footer.jsp"%>
