@@ -1,12 +1,19 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<title>404</title>
-	</head>
-	<body>
-		<h1>404 Not Found</h1>
-		<h2>페이지를 찾을 수 없습니다.</h2>
-	</body>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/error.css" />
+  <title>JavaPresso</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
+  <link href="gmarket-sans.css" rel="stylesheet"> 
+</head>
+<body>
+  <div class="container">
+    <img src="${pageContext.request.contextPath}/public/images/404error.png" alt="JavaPresso" class="sidebar_logo" />
+    <button class="button-main">메인페이지로</button>
+  </div>
+</body>
 </html>
