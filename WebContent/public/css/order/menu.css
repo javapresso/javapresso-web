@@ -1,12 +1,10 @@
 @charset "UTF-8";
+
 .content_header{
   display:flex;
-  align-items:center;
-  margin-bottom:40px;
-}
-
-.content_logo{
-	
+  align-items:right;
+  margin-bottom:3%;
+  margin-left: 60%;
 }
 
 .categories_col{ 

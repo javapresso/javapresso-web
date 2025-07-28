@@ -26,11 +26,11 @@ public class SideMenuListFilter implements Filter {
       menuList.add(new SideMenuItem("메뉴 수정하기", "/menu/updateform"));
       menuList.add(new SideMenuItem("메뉴 삭제하기", "/menu/deleteform"));
     } else if (uri.startsWith("/order")) {
-      menuList.add(new SideMenuItem("메뉴판", "/order/menu"));
+      menuList.add(new SideMenuItem("메뉴판", "/order/menuform"));
       menuList.add(new SideMenuItem("주문하기", "/order/insert/menu"));
-      menuList.add(new SideMenuItem("주문내역 조회", "/order/select"));
-      menuList.add(new SideMenuItem("주문 취소하기", "/order/delete"));
-      menuList.add(new SideMenuItem("쿠폰 확인", "/order/coupon"));
+      menuList.add(new SideMenuItem("주문내역 조회", "/order/selectform"));
+      menuList.add(new SideMenuItem("주문 취소하기", "/order/deleteform"));
+      menuList.add(new SideMenuItem("쿠폰 확인", "/order/couponform"));
     } else if (uri.startsWith("/employee")) {
       menuList.add(new SideMenuItem("직원 조회하기", "/employee/"));
     } else {

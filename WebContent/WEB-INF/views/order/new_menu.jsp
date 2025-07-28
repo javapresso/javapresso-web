@@ -18,7 +18,7 @@
 			</form>
 		</c:forEach>
 	</div>
-
+	
 	<div class="small-category">
 		<div class="buttongroup small-category-group">
 			<c:forEach var="child" items="${categoryName}">

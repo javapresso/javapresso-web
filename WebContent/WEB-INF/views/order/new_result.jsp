@@ -9,7 +9,6 @@
 
 <!-- content 아래 html 코드 -->
 
-
 </util:layout>
 
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
