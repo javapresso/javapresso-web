@@ -1,24 +1,36 @@
 package com.javapresso.handler.order;
 
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import com.javapresso.dao.OrderDao;
 import com.javapresso.dto.OrderDto;
 import com.javapresso.handler.CommandHandler;
 
 public class OrderDeleteHandler implements CommandHandler {
+  @Override
+  public String process(HttpServletRequest request, HttpServletResponse response) {
+    OrderDao dao = new OrderDao();
+    List<OrderDto> orderList = new ArrayList<>();
 
-	@Override
-	public String process(HttpServletRequest request, HttpServletResponse response) {
-		// 주문내역 삭제 페이지
-		OrderDao dao = new OrderDao();
-		OrderDto orderList = new OrderDto();
-		orderList = dao.getOrderList();
-		request.setAttribute("orderList", orderList);
-		request.setAttribute("action", "delete");
+    try (ResultSet rs = dao.getRecentOrders()) {
+      while (rs != null && rs.next()) {
+        OrderDto dto = new OrderDto();
+        dto.setOrderId(rs.getInt("order_id"));
+        dto.setCustomerId(rs.getString("customer_id"));
+        dto.setMenuName(rs.getString("menu_name"));
+        // dto.setOrderDate(rs.getTimestamp("order_date"));
 
-		return "order/select.jsp";
-	}
+        orderList.add(dto);
+      }
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+
+    request.setAttribute("orderList", orderList);
+    return "order/delete.jsp";
+  }
 
 }

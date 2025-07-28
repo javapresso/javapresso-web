@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="./deleteorder.css" />
+  <title>JavaPresso</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet" />
+  <link href="gmarket-sans.css" rel="stylesheet" />
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <img src="./logo.png" alt="JavaPresso" class="sidebar_logo" />
+      <nav class="sidebar_menu">
+        <button class="sidebar_item" id="menuboard" onclick="menuboard()">메뉴판</button>
+        <button class="sidebar_item" id="order"    onclick="order()">주문하기</button>
+        <button class="sidebar_item" id="order"    onclick="order()">주문내역 확인하기</button>
+        <button class="sidebar_item is-active" id="points"   onclick="points()" >주문 취소하기</button>
+        <button class="sidebar_item" id="points"   onclick="points()"  >포인트 확인</button>
+      </nav>
+    </aside>
+
+    <div class="content">
+        <h1 class="insertemployee" >주문내역 삭제</h1>
+        <div class="content-title" >최근 1시간 이내 주문내역입니다.</div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">주문ID</th>
+            <th scope="col">메뉴명</th>
+            <th scope="col">회원번호</th>
+            <th scope="col">주문시간</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">
+              <input type="radio" name="deleteOrder" />
+            </th>
+            <td>01</td>
+            <td>카케라떼</td>
+            <td>01025684598</td>
+            <td>2025-06-08-22222</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <input type="radio" name="deleteOrder" />
+            </th>
+            <td>02</td>
+            <td>카케라떼</td>
+            <td>01025684598</td>
+            <td>2025-06-08-22222</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <input type="radio" name="deleteOrder" />
+            </th>
+            <td>03</td>
+            <td>카케라떼</td>
+            <td>01025684598</td>
+            <td>2025-06-08-22222</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="button-group">
+        <button class="btn-delete">주문삭제</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 삭제 확인 모달 -->
+<div class="delete-modal" id="deleteModal">
+  <div class="delete-modal-content">
+    <div class="modal-text">선택한 주문정보를<br />정말로 삭제하시겠습니까?</div>
+    <div class="delete-modal-buttons">
+      <button class="modal-btn cancel">취소</button>
+      <button class="modal-btn confirm">확인</button>
+    </div>
+  </div>
+</div>
+
+
+
+  <script>
+    document
+      .querySelectorAll('.sidebar_item')
+      .forEach(btn => btn.addEventListener('click', e => {
+        document.querySelectorAll('.sidebar_item').forEach(b => b.classList.remove('is-active'));
+        e.target.classList.add('is-active');
+      }));
+    const modal = document.getElementById('deleteModal');
+      const deleteBtn = document.querySelector('.btn-delete');
+      const confirmBtn = document.querySelector('.modal-btn.confirm');
+      const cancelBtn = document.querySelector('.modal-btn.cancel');
+
+      // 삭제 버튼 클릭 시
+      deleteBtn.addEventListener('click', () => {
+        const selected = document.querySelector('input[name="deleteOrder"]:checked');
+        if (!selected) {
+          alert('삭제할 주문을 선택해주세요.');
+          return;
+        }
+        modal.style.display = 'flex';
+      });
+
+      // 확인 버튼 클릭 시
+      confirmBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+        alert('주문이 삭제되었습니다.');
+        // TODO: 실제 삭제 로직 실행
+      });
+
+      // 취소 버튼 클릭 시
+      cancelBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+      });
+
+      // 모달 배경 클릭 시 닫기
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          modal.style.display = 'none';
+        }
+      });
+  </script>
+</body>
+</html>

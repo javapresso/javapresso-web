@@ -1,0 +1,134 @@
+@charset "UTF-8";
+
+
+/* contents 내부 */
+.membership-title {
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 29px;
+    margin-bottom: 20px;
+  }
+
+  .membership-desc {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 23px;
+    margin-bottom: 10px;
+  }
+
+  .phone-input-wrapper {
+    margin-top: 20px;
+    margin-bottom: 40px;
+    width: 430px;
+  }
+
+  .phonenumber {
+    width: 100%;
+    height: 43px;
+    padding: 7px 15px;
+    font-size: 18px;
+    border: 1px solid var(--sidebar-bg);
+    border-radius: 8px;
+  }
+
+  .button-group {
+    display: flex;
+    gap: 30px;
+  }
+
+  .btn-earn-pass {
+    width: 225px;
+    height: 70px;
+    background: #3A3A4A;
+    border-radius: 20px;
+    color: #fff;
+    font-weight: 300;
+    font-size: 30px;
+    line-height: 35px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .btn-earn-points {
+    width: 225px;
+    height: 70px;
+    background: #F06A7E;
+    border:none;
+    border-radius: 20px;
+    color: #fff;
+    font-weight: 300;
+    font-size: 30px;
+    line-height: 35px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+
+  /* 모달 */
+  .modal {
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-box {
+  width: 659px;
+  height: 362px;
+  background: #EBEBEB;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  padding: 30px;
+}
+
+.modal-message {
+  font-family: 'Gmarket Sans TTF';
+  font-size: 32px;
+  font-weight: 500;
+  color: #000;
+  text-align: center;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 43px;
+}
+
+.modal-btn {
+  width: 225px;
+  height: 70px;
+  border-radius: 20px;
+  font-family: 'Gmarket Sans TTF';
+  font-size: 30px;
+  font-weight: 500;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+}
+
+.modal-btn.cancel {
+  background: #3A3A4A;
+  border: 2px solid var(--sidebar-bg);
+}
+
+.modal-btn.confirm {
+  background: #F06A7E;
+}
