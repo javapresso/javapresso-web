@@ -21,6 +21,14 @@
     <filter-name>CharacterEncodingFilter</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
+  <filter>
+    <filter-name>SideMenuListFilter</filter-name>
+    <filter-class>com.javapresso.filter.SideMenuListFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>SideMenuListFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
   <servlet>
     <servlet-name>DispatcherServlet</servlet-name>
     <servlet-class>com.javapresso.web.DispatcherServlet</servlet-class>

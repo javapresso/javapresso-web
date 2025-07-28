@@ -12,7 +12,7 @@
 				<label class="option-title">대분류</label>
 				<div class="option-box">
 					<c:forEach var="menu" items="${parentMenus}">
-					    <button type="button" class="option" data-id="${menu}">
+					    <button name="parentcategory" type="button" class="option" data-id="${menu}">
 				      		${menu}
 					    </button>
 			  		</c:forEach>
