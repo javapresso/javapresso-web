@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.javapresso.dao.MenuDao;
-import com.javapresso.dao.SideMenuItem;
 import com.javapresso.handler.CommandHandler;
 
 public class MenuInsertGetHandler implements CommandHandler {
