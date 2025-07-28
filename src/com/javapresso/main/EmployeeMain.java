@@ -1,5 +1,5 @@
 package com.javapresso.main;
-import java.sql.Connection;
+
 import java.util.Scanner;
 
 import com.javapresso.utils.EmployeeUI;
@@ -15,7 +15,6 @@ public class EmployeeMain {
 	}
 	
 	public void start() {
-		Connection con = null;
 		EmployeeUI employeeInterAction = new EmployeeUI();
 		
 		boolean escape = false;
@@ -28,16 +27,16 @@ public class EmployeeMain {
 			// 입력 확인
 			switch (userInput) {
 			case "1":
-				employeeInterAction.insertEmployee(con, read);
+				employeeInterAction.insertEmployee(read);
 				break;
 			case "2":
-				employeeInterAction.getEmployeeAll(con, read);
+				employeeInterAction.getEmployeeAll(read);
 				break;
 			case "3":
-				employeeInterAction.updateEmployee(con, read);
+				employeeInterAction.updateEmployee(read);
 				break;
 			case "4":
-				employeeInterAction.deleteEmployee(con, read);
+//				employeeInterAction.deleteEmployee(read);
 				break;
 			case "Q":
 			case "q":

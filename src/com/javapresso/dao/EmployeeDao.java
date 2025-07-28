@@ -5,10 +5,26 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+
+import org.apache.tomcat.jdbc.pool.DataSource;
+
 public class EmployeeDao {
+	static DataSource dataSource = null;
 	
-	public int insertEmployee(Connection con, String name, String phone, String title, String salary) {
+	static {
 		try {
+			Context context = new InitialContext();
+			dataSource = (DataSource)context.lookup("java:comp/env/jdbc/Oracle");
+		} catch (NamingException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public int insertEmployee(String name, String phone, String title, String salary) {
+		try (Connection con = dataSource.getConnection()) {
 			String sql = "INSERT INTO employees "
 					+ "(employee_id, employee_name, phone_number, title, salary) "
 					+ "VALUES (emp_seq.NEXTVAL, ?, ?, ?, ?)";
@@ -24,8 +40,8 @@ public class EmployeeDao {
 		}
 	}
 	
-	public ResultSet checkManager(Connection con, String id) {
-		try {
+	public ResultSet checkManager(String id) {
+		try (Connection con = dataSource.getConnection()) {
 			String sql = "SELECT "
 					+ "employee_id, manager_id "
 					+ "FROM employees "
@@ -39,8 +55,8 @@ public class EmployeeDao {
 		}
 	}
 	
-	public ResultSet getEmployee(Connection con, String id) {
-		try {
+	public ResultSet getEmployee(String id) {
+		try (Connection con = dataSource.getConnection()) {
 			String sql = "SELECT "
 					+ "employee_id, employee_name, phone_number, "
 					+ "title, salary, manager_id "
@@ -55,8 +71,8 @@ public class EmployeeDao {
 		}
 	}
 	
-	public ResultSet getEmployeeAll(Connection con) {
-		try {
+	public ResultSet getEmployeeAll() {
+		try (Connection con = dataSource.getConnection()) {
 			String sql = "SELECT "
 					+ "e.employee_id AS employee_id, e.employee_name AS name, "
 					+ "e.phone_number AS phone, title, salary, manager_id, "
@@ -79,8 +95,8 @@ public class EmployeeDao {
 		}
 	}
 	
-	public int updateEmployeeName(Connection con, String id, String name) {
-		try {
+	public int updateEmployeeName(String id, String name) {
+		try (Connection con = dataSource.getConnection()) {
 			String sql = "UPDATE employees "
 					+ "SET employee_name = ? "
 					+ "WHERE employee_id = ?";
@@ -95,8 +111,8 @@ public class EmployeeDao {
 		}
 	}
 	
-	public int updateEmployeePhone(Connection con, String id, String phone) {
-		try {
+	public int updateEmployeePhone(String id, String phone) {
+		try (Connection con = dataSource.getConnection()) {
 			String sql = "UPDATE employees "
 					+ "SET phone_number = ? "
 					+ "WHERE employee_id = ?";
@@ -111,8 +127,8 @@ public class EmployeeDao {
 		}
 	}
 	
-	public int updateEmployeeSalary(Connection con, String id, String salary) {
-		try {
+	public int updateEmployeeSalary(String id, String salary) {
+		try (Connection con = dataSource.getConnection()) {
 			String sql = "UPDATE employees "
 					+ "SET salary = ? "
 					+ "WHERE employee_id = ?";
@@ -127,8 +143,8 @@ public class EmployeeDao {
 		}
 	}
 	
-	public int updateEmployeeTitle(Connection con, String id, String title) {
-		try {
+	public int updateEmployeeTitle(String id, String title) {
+		try (Connection con = dataSource.getConnection()) {
 			String sql = "UPDATE employees "
 					+ "SET title = ? "
 					+ "WHERE employee_id = ?";
@@ -143,8 +159,8 @@ public class EmployeeDao {
 		}
 	}
 	
-	public int updateEmployeeManager(Connection con, String id, String manager_id) {
-		try {
+	public int updateEmployeeManager(String id, String manager_id) {
+		try (Connection con = dataSource.getConnection()) {
 			String sql = "UPDATE employees "
 					+ "SET manager_id = ? "
 					+ "WHERE employee_id = ?";
@@ -159,8 +175,8 @@ public class EmployeeDao {
 		}
 	}
 	
-	public void deleteEmployeeSchedule(Connection con, String id) {
-		try {
+	public void deleteEmployeeSchedule(String id) {
+		try (Connection con = dataSource.getConnection()) {
 			String sql = "DELETE FROM schedule WHERE employee_id = ?";
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setInt(1,  Integer.parseInt(id));
@@ -170,8 +186,8 @@ public class EmployeeDao {
 		}
 	}
 	
-	public int deleteEmployee(Connection con, String id) {
-		try {
+	public int deleteEmployee(String id) {
+		try (Connection con = dataSource.getConnection()) {
 			String sql = "DELETE FROM employees WHERE employee_id = ?";
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setInt(1, Integer.parseInt(id));

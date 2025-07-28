@@ -21,6 +21,7 @@ public class DataSource {
 		
 		try {
 			con = DriverManager.getConnection(url, username, password);
+			System.out.println("oracle database 연결됨" + con);
 		} catch (SQLException e) {
 			System.out.println("데이터베이스 커넥션 에러 발생");
 			System.out.println(e.getMessage());
