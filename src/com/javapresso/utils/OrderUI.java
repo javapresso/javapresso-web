@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import com.javapresso.dao.OrderDao;
-import com.javapresso.dao.OrderDao.MenuItem;
+import com.javapresso.dto.MenuItemDto;
 
 public class OrderUI {
 	private static Scanner sc;
@@ -72,13 +72,13 @@ public class OrderUI {
 	
 	// 1. 메뉴판 보기
 	public void printMenuBoard() {
-		List<MenuItem> menus = orderDao.getMenuItems();
+		List<MenuItemDto> menus = orderDao.getMenuItems();
 		renderSys.printSubTitle(renderSys.WIDTH, "메뉴판");
         System.out.printf(" %-10s%-10s%-19s%-9s%-10s%-9s%-28s\n",
                 "대분류", "소분류", "메뉴명", "가격", "솔드아웃", "아이스", "메뉴설명");
         renderSys.printDivider(renderSys.WIDTH, true);
 
-        for (MenuItem item : menus) {
+        for (MenuItemDto item : menus) {
             String parent = padKorean(item.parentName, 10);
             String category = padKorean(item.categoryName, 10);
             String name = padKorean(item.menuName, 14);
