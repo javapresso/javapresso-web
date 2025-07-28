@@ -1,7 +1,9 @@
-package com.javapresso.handler;
+package com.javapresso.handler.order;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.javapresso.handler.CommandHandler;
 
 public class OrderCouponHandler implements CommandHandler {
 

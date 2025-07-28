@@ -1,4 +1,4 @@
-package com.javapresso.handler;
+package com.javapresso.handler.employee;
 
 import java.util.ArrayList;
 
@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.javapresso.dao.EmployeeDao;
 import com.javapresso.dto.EmployeeDto;
+import com.javapresso.handler.CommandHandler;
 
 public class EmployeeSelectAllHandler implements CommandHandler {
 	@Override
