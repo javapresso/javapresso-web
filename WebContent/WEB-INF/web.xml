@@ -58,8 +58,8 @@
   </servlet-mapping>
   <jsp-config>
   	<jsp-property-group>
-		<url-pattern>*.jsp</url-pattern>
-  		<el-ignored>false</el-ignored>  <!-- EL 사용 허용 -->
+	  <url-pattern>*.jsp</url-pattern>
+  	  <el-ignored>false</el-ignored>
   	</jsp-property-group>
   </jsp-config>
 </web-app>
