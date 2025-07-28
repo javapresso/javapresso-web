@@ -3,7 +3,6 @@
 <%@ attribute name="menuList" required="true" type="java.util.ArrayList" %>
 
 <aside class="sidebar">
-	<img src="${pageContext.request.contextPath}/public/images/logo.png" alt="JavaPresso" class="sidebar_logo" />
 	<nav class="sidebar_menu">
 		<c:forEach var="menu" items="${menuList}">
 			<button class="sidebar_item" onclick="location.href='${menu.url}'">${menu.name}</button>
