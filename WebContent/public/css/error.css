@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+  font-family:'Gmarket Sans TTF','Noto Sans KR',sans-serif;
+}
+
+.container{
+  width:1180px;   
+  height:820px;         
+  margin:0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.error-content{
+  width: 735px;
+  height: 330px;
+  margin-bottom: 3%;
+}
+
+.button-main{
+  width: 225px;
+  height: 70px;
+  background: #F06A7E;
+  border:none;
+  border-radius: 20px;
+  color: #fff;
+  font-weight: 200;
+  font-size: 30px;
+  line-height: 35px;
+  cursor: pointer;
+}
+
