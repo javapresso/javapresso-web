@@ -13,10 +13,15 @@ import javax.naming.NamingException;
 
 import org.apache.tomcat.jdbc.pool.DataSource;
 
+import com.javapresso.dto.EmployeeDto;
+import com.javapresso.dto.MenuItemDto;
+import com.javapresso.dto.OrderDto;
+import com.javapresso.dto.PointItemDto;
+
 
 public class OrderDao {
 	static DataSource dataSource = null;
-	
+
 	static {
 		try {
 			Context context = new InitialContext();
@@ -26,54 +31,41 @@ public class OrderDao {
 		}
 	}
 
-	//1.메뉴판
-	public static class MenuItem {
-		public String parentName;
-		public String categoryName;
-		public String menuName;
-		public int price;
-		public String description;
-		public int isSoldout;
-		public int iceable;
-	}
-
-	public List<MenuItem> getMenuItems() {
-		List<MenuItem> menuList = new ArrayList<>();
-
-		String sql = "SELECT c.parent_name AS parentName, "
-				+ "       m.category_name AS categoryName, "
-				+ "       m.menu_name AS menuName, "
-				+ "       m.price AS price, "
-				+ "       m.description AS description, "
-				+ "       m.is_soldout AS isSoldout, "
-				+ "       m.iceable AS iceable "
-				+ "FROM menus m "
-				+ "JOIN categories c ON m.category_name = c.category_name "
-				+ "ORDER BY parent_name DESC, m.category_name";
-
+	public ArrayList<MenuItemDto> getMenuItems() {
 		try (Connection con = dataSource.getConnection()) {
+			String sql = "SELECT c.parent_name AS parentName, "
+					+ "       m.category_name AS categoryName, "
+					+ "       m.menu_name AS menuName, "
+					+ "       m.price AS price, "
+					+ "       m.description AS description, "
+					+ "       m.is_soldout AS isSoldout, "
+					+ "       m.iceable AS iceable "
+					+ "FROM menus m "
+					+ "JOIN categories c ON m.category_name = c.category_name "
+					+ "ORDER BY parent_name DESC, m.category_name";
 			PreparedStatement stmt = con.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
 
+			ArrayList<MenuItemDto> menuList = new ArrayList<>();
 			while (rs.next()) {
-				MenuItem item = new MenuItem();
-				item.parentName = rs.getString("parentName");
-				item.categoryName = rs.getString("categoryName");
-				item.menuName = rs.getString("menuName");
-				item.price = rs.getInt("price");
-				item.description = rs.getString("description");
-				item.isSoldout = rs.getInt("isSoldout");
-				item.iceable = rs.getInt("iceable");
+				MenuItemDto item = new MenuItemDto();
+				item.setParentName(rs.getString("parentName"));
+				item.setCategoryName(rs.getString("categoryName"));
+				item.setMenuName(rs.getString("menuName"));
+				item.setPrice(rs.getInt("price"));
+				item.setDescription(rs.getString("description"));
+				item.setIsSoldout(rs.getInt("isSoldout"));
+				item.setIceable(rs.getInt("iceable"));
 
 				menuList.add(item);
 			}
 
+			return menuList;
 		} catch (SQLException e) {
 			System.out.println("메뉴 조회 중 오류 발생");
 			e.printStackTrace();
+			return null;
 		}
-
-		return menuList;
 	}
 
 	//02. 주문하기
@@ -180,7 +172,7 @@ public class OrderDao {
 	}
 
 	// 3. 주문내역 확인하기
-	public ResultSet getOrderList() throws SQLException {
+	public OrderDto getOrderList() {
 		try (Connection con = dataSource.getConnection()) {
 			String sql = "SELECT order_id AS orderId, "
 					+ "customer_id AS customerId, "
@@ -190,11 +182,21 @@ public class OrderDao {
 					+ "WHERE TRUNC(order_date) = TRUNC(SYSDATE) "
 					+ "ORDER BY order_date DESC ";
 			PreparedStatement stmt = con.prepareStatement(sql);
-			return stmt.executeQuery();
+			ResultSet rs = stmt.executeQuery();
+
+			if (rs.next()) {
+				OrderDto order = new OrderDto();
+				order.setOrderId(rs.getInt("orderId"));
+				order.setCustomerId(rs.getString("customerId"));
+				order.setMenuName(rs.getString("menuName"));
+				order.setOrderDate(rs.getDate("orderDate"));
+
+				return order;
+			} else { return null; }
 		} catch (SQLException e) {
 			e.printStackTrace();
+			return null;
 		}
-		return null;
 	}
 
 	// 4. 주문 취소하기 
@@ -227,7 +229,7 @@ public class OrderDao {
 	}
 
 	// 주문 취소
-	public int deleteOrderById(int orderId) throws SQLException {
+	public int deleteOrderById(int orderId) {
 		try (Connection con = dataSource.getConnection()) {
 			String sql = "DELETE FROM orders WHERE order_id = ?";
 			PreparedStatement stmt = con.prepareStatement(sql);
@@ -241,13 +243,23 @@ public class OrderDao {
 	}
 
 	// 5. 포인트 확인
-	public ResultSet getMemberPointInfo(String customerId) throws SQLException {
+	public PointItemDto getMemberPointInfo(String customerId) {
 		try (Connection con = dataSource.getConnection()) {
 			String sql = "SELECT customer_id, stamp, coupon, FLOOR(stamp / 10) AS expectedCoupon " +
 					"FROM members WHERE customer_id = ?";
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setString(1, customerId);
-			return stmt.executeQuery();
+			
+			ResultSet rs = stmt.executeQuery();
+
+	        if (rs.next()) {
+	        	PointItemDto point = new PointItemDto();
+	            point.customerId = rs.getString("customer_id");
+	            point.stamp = rs.getInt("stamp");
+	            point.coupon = rs.getInt("coupon");
+	            point.expectedCoupon = rs.getInt("expectedCoupon");
+	            return point;
+	        }
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
