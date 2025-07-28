@@ -14,7 +14,6 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/insert.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/header.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/footer.css" />
-
 </head>
 <body>
 <div class="header-container">
@@ -28,7 +27,7 @@
 	        <ul>
 	            <li><a href="${pageContext.request.contextPath}/menu/">메뉴 조회</a></li>
 	            <li><a href="${pageContext.request.contextPath}/member/">직원관리</a></li>
-	            <li><a href="${pageContext.request.contextPath}/order/menu">주문관리</a></li>
+	            <li><a href="${pageContext.request.contextPath}/order/menuform">주문관리</a></li>
 	        </ul>
 	    </nav>
 	</header>
