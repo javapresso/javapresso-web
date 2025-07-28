@@ -11,8 +11,8 @@
 	  </p>
 	</footer>
 </div>
-
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="${pageContext.request.contextPath}/public/js/sidebar.js"></script>
-<script src="${pageContext.request.contextPath}/public/js/member.js"></script>
+<script src="${pageContext.request.contextPath}/public/js/menu.js"></script>
 </body>
 </html>

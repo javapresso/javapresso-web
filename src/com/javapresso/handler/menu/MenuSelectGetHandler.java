@@ -1,15 +1,13 @@
-package com.javapresso.handler;
-
-import java.util.ArrayList;
+package com.javapresso.handler.menu;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.javapresso.dao.SideMenuItem;
+import com.javapresso.handler.CommandHandler;
 
-public class MenuHomeGetHandler implements CommandHandler{
+public class MenuSelectGetHandler implements CommandHandler {
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) {
-		return "menu/index.jsp";
+		return "menu/detail.jsp";
 	}
 }

@@ -1,7 +1,9 @@
-package com.javapresso.handler;
+package com.javapresso.handler.employee;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.javapresso.handler.CommandHandler;
 
 public class EmployeeInsertHandler implements CommandHandler {
 	@Override

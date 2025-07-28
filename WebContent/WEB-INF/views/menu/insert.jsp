@@ -10,9 +10,9 @@
 			<p class="option-title">카테고리 설정하기</p>
 			<div class="option-wrapper">
 				<label class="option-title">대분류</label>
-				<div class="option-box">
+				<div class="option-box" name="parent-category">
 					<c:forEach var="menu" items="${parentMenus}">
-					    <button name="parentcategory" type="button" class="option" data-id="${menu}">
+					    <button type="button" class="option" data-id="${menu}">
 				      		${menu}
 					    </button>
 			  		</c:forEach>
@@ -20,7 +20,7 @@
 			</div>
 			<div class="option-wrapper">
 				<label class="option-title">소분류</label>
-				<div class="option-box">
+				<div class="option-box" name="child-category">
 					<c:forEach var="child" items="${childMenus}">
 					    <button type="button" class="option" data-id="${category.id}">
 				      		${category.name}

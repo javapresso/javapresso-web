@@ -1,4 +1,4 @@
-package com.javapresso.handler;
+package com.javapresso.handler.order;
 
 import java.util.ArrayList;
 
@@ -7,15 +7,18 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.javapresso.dao.OrderDao;
 import com.javapresso.dto.MenuItemDto;
+import com.javapresso.handler.CommandHandler;
 
-public class OrderMenuHandler implements CommandHandler {
+public class OrderInsertMenuHandler implements CommandHandler {
+
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) {
-		// 메뉴판 조회 페이지
+		// 주문하기 - 메뉴/옵션 선택 페이지
 		OrderDao dao = new OrderDao();
 		ArrayList<MenuItemDto> menuList = dao.getMenuItems();
 		request.setAttribute("menuList", menuList);
-		
-		return "order/menu.jsp";
+
+		return "order/new_menu.jsp";
 	}
+
 }
