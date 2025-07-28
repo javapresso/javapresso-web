@@ -1,4 +1,4 @@
-package com.javapresso.handler;
+package com.javapresso.handler.menu;
 
 import java.util.ArrayList;
 
@@ -6,8 +6,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.javapresso.dao.SideMenuItem;
+import com.javapresso.handler.CommandHandler;
 
-public class MenuUpdateGetHandler implements CommandHandler {
+public class MenuDeleteGetHandler implements CommandHandler {
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) {
 		ArrayList<SideMenuItem> menuList = new ArrayList<>();
@@ -19,6 +20,6 @@ public class MenuUpdateGetHandler implements CommandHandler {
 		
 		request.setAttribute("menuList", menuList);
 		
-		return "menu/update.jsp";
+		return "menu/delete.jsp";
 	}
 }
