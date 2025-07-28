@@ -14,5 +14,6 @@
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="${pageContext.request.contextPath}/public/js/sidebar.js"></script>
 <script src="${pageContext.request.contextPath}/public/js/menu.js"></script>
+<script src="${pageContext.request.contextPath}/public/js/modal.js"></script>
 </body>
 </html>

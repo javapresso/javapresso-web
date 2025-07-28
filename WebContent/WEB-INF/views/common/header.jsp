@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/insert.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/header.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/footer.css" />
-
+<link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/modal.css" />
 </head>
 <body>
 <div class="header-container">

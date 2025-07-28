@@ -35,7 +35,7 @@ public class SideMenuListFilter implements Filter {
 //            기본메뉴
         }
 
-        request.setAttribute("menuList", menuList);
+        request.setAttribute("sideMenus", menuList);
 
         chain.doFilter(request, response);
     }
