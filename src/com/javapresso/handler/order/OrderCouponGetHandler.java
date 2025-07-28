@@ -1,10 +1,11 @@
-package com.javapresso.handler;
+package com.javapresso.handler.order;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.javapresso.dao.OrderDao;
 import com.javapresso.dto.PointItemDto;
+import com.javapresso.handler.CommandHandler;
 
 public class OrderCouponGetHandler implements CommandHandler {
 

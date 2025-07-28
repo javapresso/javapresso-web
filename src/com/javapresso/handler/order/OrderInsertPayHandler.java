@@ -1,28 +1,23 @@
-package com.javapresso.handler;
-
-import java.util.ArrayList;
+package com.javapresso.handler.order;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.javapresso.dao.OrderDao;
-import com.javapresso.dto.MenuItemDto;
+import com.javapresso.handler.CommandHandler;
 
-public class OrderInsertPostHandler implements CommandHandler {
+public class OrderInsertPayHandler implements CommandHandler {
 
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) {
-		// 주문하기 - 메뉴/옵션 선택 페이지
-		OrderDao dao = new OrderDao();
+		// 주문하기 - 결제 선택 페이지
 		
 		String member_id = request.getParameter("phone");
 		String menuName = request.getParameter("name");
 		String req = request.getParameter("request");
 		String is_ice = request.getParameter("ice");
 		String coupon = request.getParameter("coupon");
-		dao.insertOrder(member_id, menuName, req, is_ice == "1" ? true : false, coupon == "1" ? true : false);
 		
-		return "redirect:order/result";
+		return "order/new_pay.jsp";
 	}
 
 }
