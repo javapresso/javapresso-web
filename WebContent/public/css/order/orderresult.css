@@ -1,0 +1,57 @@
+@charset "UTF-8";
+
+
+/* 주문완료 페이지 타이틀 */
+.order-result {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 37px;
+  width: 100%;
+  margin-bottom: 3%;
+}
+
+/* 주문 완료 카드 */
+.result-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #fff;
+  border: 2px solid rgba(94, 75, 75, 0.3);
+  border-radius: 20px;
+  padding: 25px 22px;
+  gap: 23px;
+  width: 796px;
+  height: 339px;
+}
+
+.result-info {
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  color: #000;
+  width: 183px;
+}
+
+/* 버튼 그룹 */
+.button-group {
+  display: flex;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.check-button {
+  width: 240px;
+  height: 70px;
+  background-color: #F06A7E;
+  border: none;
+  border-radius: 35px;
+  color: white;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 33px;
+  cursor: pointer;
+}
+
+.check-button:hover {
+  background-color: #d3545f;
+}

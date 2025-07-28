@@ -1,0 +1,61 @@
+@charset "UTF-8";
+
+.content_header{
+  display:flex;
+  align-items:right;
+  margin-bottom:3%;
+  margin-left: 60%;
+}
+
+.categories_col{ 
+  font-family:'Itim',cursive;
+  font-size:64px;
+  line-height:77px;
+  margin:0;                
+}
+
+.categories_col h2{
+  font-family:'Itim',cursive;
+  font-size:24px;
+  line-height:29px;
+}
+
+
+/* 테이블 */
+/* content 내 테이블 스타일 */
+.content table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  box-shadow: 0 0 6px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.content thead th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+  padding: 12px;
+  border-bottom: 2px solid #dee2e6;
+  text-align: center;
+  font-size: 18px;
+  color: #212529;
+}
+
+.content tbody td,
+.content tbody th {
+  border: 1px solid #dee2e6;
+  padding: 12px;
+  text-align: center;
+  font-size: 16px;
+  color: #212529;
+}
+
+.content tbody tr:hover {
+  background-color: #f1f3f5;
+}
+
+.content th[scope="row"] {
+  width: 40px;
+}
+

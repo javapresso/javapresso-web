@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="./updateemployee.css" />
+  <title>JavaPresso</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet" />
+  <link href="gmarket-sans.css" rel="stylesheet" />
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <img src="./logo.png" alt="JavaPresso" class="sidebar_logo" />
+
+      <nav class="sidebar_menu">
+        <button class="sidebar_item" id="menuboard" onclick="menuboard()">직원 조회하기</button>
+        <button class="sidebar_item" id="order"    onclick="order()"   >직원 추가하기</button>
+        <button class="sidebar_item" id="points"   onclick="points()"  >직원 삭제하기</button>
+        <button class="sidebar_item is-active" id="setting"  onclick="setting()" >직원 수정하기</button>
+      </nav>
+    </aside>
+
+    <div class="content">
+        <h1 class="insertemployee" >직원 정보 수정</h1>
+        <div class="content-title" >수정할 직원을 선택해주세요.</div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">직원ID</th>
+            <th scope="col">이름</th>
+            <th scope="col">전화번호</th>
+            <th scope="col">직급</th>
+            <th scope="col">급여</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">
+              <input type="radio" name="deleteEmployee" />
+            </th>
+            <td>01</td>
+            <td>홍길동</td>
+            <td>01025684598</td>
+            <td>알바</td>
+            <td>500,000</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <input type="radio" name="deleteEmployee" />
+            </th>
+            <td>02</td>
+            <td>김철수</td>
+            <td>01012345678</td>
+            <td>매니저</td>
+            <td>1,500,000</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <input type="radio" name="deleteEmployee" />
+            </th>
+            <td>03</td>
+            <td>박영희</td>
+            <td>01098765432</td>
+            <td>점장</td>
+            <td>2,500,000</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="button-group">
+        <button class="btn-update">수정하기</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document
+      .querySelectorAll('.sidebar_item')
+      .forEach(btn => btn.addEventListener('click', e => {
+        document.querySelectorAll('.sidebar_item').forEach(b => b.classList.remove('is-active'));
+        e.target.classList.add('is-active');
+      }));
+  </script>
+</body>
+</html>
