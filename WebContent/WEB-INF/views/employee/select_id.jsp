@@ -48,111 +48,81 @@
 			</tbody>
 		</table>
 	</div>
+	
+	<div id="editInputArea" style="margin-top: 20px;"></div>
 
 	<form id="updateForm" method="post"
 		action="${pageContext.request.contextPath}/employee/update.do">
-		<div id="editInputArea" style="margin-top: 20px;">
 			<input type="hidden" name="id" id="inputId" value="${emp.employeeId}" />
-			<input type="hidden" name="target" id="inputTarget" /> <input
-				type="hidden" name="value" id="inputValue" />
-		</div>
+			<input type="hidden" name="target" id="inputTarget" />
+			<input type="hidden" name="value" id="inputValue" />
 
 		<div class="button-group" style="margin-top: 20px;">
 			<button id="btnCancel" class="btn-earn-pass">
 				<fmt:message key="empSelId.ButtonBack" />
 			</button>
-			<button id="btnSave" class="btn-earn-points" onclick="updateHandler">
+			<button id="btnSave" class="btn-earn-points" type="button">
 				<fmt:message key="empSelId.ButtonSave" />
 			</button>
 		</div>
 	</form>
 </util:layout>
 <script>
-// 직원 초기 데이터 (예시 - 실제는 JSP에서 동적 세팅)
-const employeeData = {
+	const employeeData = {
+		name: "${emp.employeeName}",
+		phone: "${emp.phoneNumber}",
+		title: "${emp.title}",
+		salary: "${emp.salary}"
+	};
 
-  name: "홍길동",
-  phone: "01025684598",
-  title: "알바",
-  salary: "500,000"
-};
+	const editInputArea = document.getElementById('editInputArea');
 
-const editInputArea = document.getElementById('editInputArea');
+	function clearEditInput() {
+		editInputArea.innerHTML = '';
+	}
 
-function clearEditInput() {
-  editInputArea.innerHTML = '';
-}
+	function createInput(field, value) {
+		clearEditInput();
+		const input = document.createElement('input');
+		input.type = 'text';
+		input.id = 'inputEditField';
+		input.value = value;
+		input.style.width = '300px';
+		input.style.padding = '8px';
+		input.style.fontSize = '16px';
+		input.setAttribute('data-field', field);
+		editInputArea.appendChild(input);
+		input.focus();
+	}
 
-function createInput(field, value) {
-  clearEditInput();
-  const input = document.createElement('input');
-  input.type = 'text';
-  input.id = 'inputEditField';
-  input.value = value;
-  input.style.width = '300px';
-  input.style.padding = '8px';
-  input.style.fontSize = '16px';
-  input.setAttribute('data-field', field);
-  editInputArea.appendChild(input);
-  input.focus();
-}
+	// 라디오 선택 시 입력창 생성
+	document.querySelectorAll('input[name="editField"]').forEach(radio => {
+		radio.addEventListener('change', e => {
+		    const field = e.target.value;
+		    createInput(field, employeeData[field]);
+		    document.getElementById("inputTarget").value = field;
+		});
+	});
 
-// 라디오 선택 시 입력창 생성
-document.querySelectorAll('input[name="editField"]').forEach(radio => {
-  radio.addEventListener('change', e => {
-    const field = e.target.value;
-    createInput(field, employeeData[field]);
-  });
-});
+	// 저장 버튼 눌렀을 때
+	document.getElementById("btnSave").addEventListener("click", function () {
+		const input = document.getElementById("inputEditField");
+		if (!input) {
+			alert("수정할 항목을 선택하세요.");
+			return;
+		}
 
-// 입력취소 버튼
-document.getElementById('btnCancel').addEventListener('click', () => {
-  clearEditInput();
-  document.querySelectorAll('input[name="editField"]').forEach(radio => radio.checked = false);
-});
+		const newValue = input.value.trim();
+		if (newValue === "") {
+			alert("빈 값은 저장할 수 없습니다.");
+		    return;
+		}
 
-// 저장 버튼 (임시 alert)
-document.getElementById('btnSave').addEventListener('click', () => {
-  const input = document.getElementById('inputEditField');
-  if (!input) {
-    alert('수정할 항목을 선택하세요.');
-    return;
-  }
-  const field = input.getAttribute('data-field');
-  const newValue = input.value.trim();
-  if (!newValue) {
-    alert('값을 입력하세요.');
-    input.focus();
-    return;
-  }
+		// hidden에 값 넣기
+		document.getElementById("inputValue").value = newValue;
 
-  // 데이터 업데이트 (실제는 서버 전송 후 반영)
-  employeeData[field] = newValue;
-
-  // 화면에 바로 반영
-  document.getElementById('field' + field.charAt(0).toUpperCase() + field.slice(1)).textContent = newValue;
-
-  alert(`${field}이(가) 수정되었습니다.`);
-
-  clearEditInput();
-  document.querySelectorAll('input[name="editField"]').forEach(radio => radio.checked = false);
-});
-
-function updateHandler() {
-  const selectTarget = document.querySelector('input[name="editField"]:checked');
-  if (!selectTarget) {
-    alert('수정할 영역을 선택해주세요.');
-    return;
-  }
-
-  const edit_input = document.querySelector('input[name="inputEditField"]');
-  if (!edit_input) {
-    alert('값을 입력해주세요.');
-    return;
-  }
-
-  document.getElementById('inputTarget').value = selectTarget.value;
-  document.getElementById('inputValue').value = edit_input.value;
-  document.getElementById('updateForm').submit();
+		// submit
+		document.getElementById("updateForm").submit();
+	});
 </script>
 <%@ include file="/WEB-INF/views/common/footer.jsp"%>
