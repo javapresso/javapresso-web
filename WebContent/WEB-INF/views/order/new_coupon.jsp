@@ -1,14 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="util" tagdir="/WEB-INF/tags"%>
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
-
-<link rel="stylesheet"
-    href="${pageContext.request.contextPath}/public/css/order/orderform1.css" />
-
 <util:layout menuList="${sideMenus}">
-
   <div class="big-category">Categories</div>
   <div class="buttongroup big-category-group">
     <c:forEach var="parentCategory" items="${parentNameList}">
@@ -21,7 +15,6 @@
       </form>
     </c:forEach>
   </div>
-  
   <c:if test="${not empty selectedBig}">
     <div class="small-category">
       <div class="buttongroup small-category-group">
