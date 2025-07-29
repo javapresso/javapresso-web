@@ -10,13 +10,13 @@ body{
   font-family:'Gmarket Sans TTF','Noto Sans KR',sans-serif;
 }
 
-.container{
+.error-container{
   width:1180px;   
   height:820px;         
   margin:0 auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
 }
 
@@ -39,3 +39,21 @@ body{
   cursor: pointer;
 }
 
+.warning-title {
+	font-size: 60px;
+	color: red;
+	font-weight: 800;
+	margin-buttom: 20px;
+}
+
+.warning-icon {
+	width: 200px;
+	height: 200px;
+}
+
+.error-button-wrapper {
+	display: flex;
+	border: none;
+	width: 60%;
+	justify-content: space-between;
+}
