@@ -20,6 +20,6 @@ public class EmployeeDeleteHandler implements CommandHandler {
 		request.setAttribute("empList", empList);
 		request.setAttribute("action", "delete");
 		
-		return "employee/select_all.jsp";
+		return "employee/select.jsp";
 	}
 }

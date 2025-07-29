@@ -6,6 +6,8 @@
 	<meta charset="UTF-8">
 	<title>빠른 행복의 시작 JAVAPRESSO</title>
 	<link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
+	<link href="gmarket-sans.css" rel="stylesheet" />
+	<link href="${pageContext.request.contextPath}/gmarket-sans.css" rel="stylesheet"> 
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ungveloper/web-fonts/GmarketSans/font-face.css" />
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ungveloper/web-fonts/GmarketSans/font-family.css" />
 	<!-- common styles -->
@@ -16,10 +18,13 @@
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/footer.css" />
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/modal.css" />
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/login.css" />
+	<!-- employee styles -->
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/employee/select.css" />
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/employee/insert.css" />
 	<!-- menu styles -->
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/insert.css" />
 	<!-- order styles -->
-  	<link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/order/insert_result.css" />
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/order/insert_result.css" />
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/order/menu.css" />
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/order/orderform1.css" />
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/order/orderform2.css" />
