@@ -19,11 +19,11 @@
 	<!-- menu styles -->
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/insert.css" />
 	<!-- order styles -->
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/order/insert_result.css" />
+  	<link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/order/insert_result.css" />
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/order/menu.css" />
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/order/orderform1.css" />
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/order/orderform2.css" />
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/order/orderdelete.css" />
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/order/orderform1.css" />
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/order/orderform2.css" />
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/order/orderdelete.css" />
 </head>
 <body>
 	<div class="header-container">
