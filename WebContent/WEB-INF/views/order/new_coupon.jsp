@@ -21,7 +21,7 @@
       </form>
     </c:forEach>
   </div>
-
+  
   <c:if test="${not empty selectedBig}">
     <div class="small-category">
       <div class="buttongroup small-category-group">
