@@ -9,7 +9,7 @@ import com.javapresso.dto.MenuItemDto;
 import com.javapresso.handler.CommandHandler;
 
 public class OrderInsertMenuHandler implements CommandHandler {
-
+  // 맨 처음 주문할 메뉴 선택하는 페이지
   @Override
   public String process(HttpServletRequest request, HttpServletResponse response) {
     OrderDao dao = new OrderDao();

@@ -1,5 +1,9 @@
 @charset "UTF-8";
-
+.coupon_check{
+	margin-top:15%;
+	margin-left:20%;
+	justify-content: center;
+}
 .membership-title {
     font-weight: 700;
     font-size: 25px;
