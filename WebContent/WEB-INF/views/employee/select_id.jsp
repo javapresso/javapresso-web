@@ -3,76 +3,54 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="util" tagdir="/WEB-INF/tags"%>
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/public/css/order/orderform1.css" />
 
 <util:layout menuList="${sideMenus}">
-	<!DOCTYPE html>
-	<html lang="ko">
+	<h1 class="insertemployee">직원 정보 수정</h1>
+	<div class="content-title" id="employeeTitle">${emp.employeeName}님의
+		수정할 내용을 선택하세요.</div>
 
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/public/css/employee/select_id.css" />
-<link href="https://fonts.googleapis.com/css2?family=Itim&display=swap"
-	rel="stylesheet" />
-<link href="gmarket-sans.css" rel="stylesheet" />
-<title>JavaPresso</title>
-</head>
-
-<body>
-	<div class="container">
-		<div class="content">
-			<h1 class="insertemployee">직원 정보 수정</h1>
-			<div class="content-title" id="employeeTitle">${emp.employeeName}님의
-				수정할 내용을 선택하세요.</div>
-
-			<div class="content-list">
-				<table>
-					<tbody>
-						<tr id="row">
-							<td><input type="radio" name="editField" value="name"
-								id="editName" /> <label for="editName">이름</label></td>
-							<td id="fieldName">${emp.employeeName}</td>
-						</tr>
-						<tr id="row">
-							<td><input type="radio" name="editField" value="phone"
-								id="editPhone" /> <label for="editPhone">전화번호</label></td>
-							<td id="fieldPhone">${emp.phoneNumber}</td>
-						</tr>
-						<tr id="row">
-							<td><input type="radio" name="editField" value="title"
-								id="editPosition" /> <label for="editPosition">직급</label></td>
-							<td id="fieldPosition">${emp.title}</td>
-						</tr>
-						<tr id="row">
-							<td><input type="radio" name="editField" value="salary"
-								id="editSalary" /> <label for="editSalary">급여</label></td>
-							<td id="fieldSalary">${emp.salary}</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-
-			<form id="updateForm" method="post"
-				action="${pageContext.request.contextPath}/employee/update.do">
-				<div id="editInputArea" style="margin-top: 20px;">
-					<input type="hidden" name="id" id="inputId"
-						value="${emp.employeeId}" /> <input type="hidden" name="target"
-						id="inputTarget" /> <input type="hidden" name="value"
-						id="inputValue" />
-				</div>
-
-				<div class="button-group" style="margin-top: 20px;">
-					<button id="btnCancel" class="btn-earn-pass">뒤로가기</button>
-					<button id="btnSave" class="btn-earn-points" onclick="updateHandler">저장하기</button>
-				</div>
-			</form>
-		</div>
+	<div class="content-list">
+		<table>
+			<tbody>
+				<tr id="row">
+					<td><input type="radio" name="editField" value="name"
+						id="editName" /> <label for="editName">이름</label></td>
+					<td id="fieldName">${emp.employeeName}</td>
+				</tr>
+				<tr id="row">
+					<td><input type="radio" name="editField" value="phone"
+						id="editPhone" /> <label for="editPhone">전화번호</label></td>
+					<td id="fieldPhone">${emp.phoneNumber}</td>
+				</tr>
+				<tr id="row">
+					<td><input type="radio" name="editField" value="title"
+						id="editPosition" /> <label for="editPosition">직급</label></td>
+					<td id="fieldPosition">${emp.title}</td>
+				</tr>
+				<tr id="row">
+					<td><input type="radio" name="editField" value="salary"
+						id="editSalary" /> <label for="editSalary">급여</label></td>
+					<td id="fieldSalary">${emp.salary}</td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
 
-	<script>
+	<form id="updateForm" method="post"
+		action="${pageContext.request.contextPath}/employee/update.do">
+		<div id="editInputArea" style="margin-top: 20px;">
+			<input type="hidden" name="id" id="inputId" value="${emp.employeeId}" />
+			<input type="hidden" name="target" id="inputTarget" /> <input
+				type="hidden" name="value" id="inputValue" />
+		</div>
+
+		<div class="button-group" style="margin-top: 20px;">
+			<button id="btnCancel" class="btn-earn-pass">뒤로가기</button>
+			<button id="btnSave" class="btn-earn-points" onclick="updateHandler">저장하기</button>
+		</div>
+	</form>
+</util:layout>
+<script>
     // 직원 초기 데이터 (예시 - 실제는 JSP에서 동적 세팅)
     const employeeData = {
       name: "홍길동",
@@ -159,10 +137,5 @@
 		document.getElementById('inputValue').value = edit_input.value;
 		document.getElementById('updateForm').submit();
     }
-  </script>
-</body>
-	</html>
-
-</util:layout>
-
+</script>
 <%@ include file="/WEB-INF/views/common/footer.jsp"%>
