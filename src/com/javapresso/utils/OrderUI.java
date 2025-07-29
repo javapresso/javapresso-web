@@ -8,6 +8,8 @@ import java.util.Scanner;
 
 import com.javapresso.dao.OrderDao;
 import com.javapresso.dto.MenuItemDto;
+import com.javapresso.dto.OrderDto;
+import com.javapresso.dto.PointItemDto;
 
 public class OrderUI {
 	private static Scanner sc;
@@ -325,22 +327,33 @@ public class OrderUI {
     
     // 3.주문목록 확인
     public void printOrderList() {
-    		try (ResultSet rs = orderDao.getOrderList()) {
+			List<OrderDto> orderList = orderDao.getOrderList();
+			try {
+//    		try (ResultSet rs = orderDao.getOrderList()) {
     			renderSys.printSubTitle(renderSys.WIDTH, "주문내역 확인하기");
     			System.out.println("순서\t주문번호  회원번호 주문일\t\t  주문한 메뉴");
     			renderSys.printDivider(renderSys.WIDTH, true);
             int i = 1;
-            while (rs.next()) {
-                System.out.printf(" %d \t %d \t %s    %s	   %s \n",
-                        i++,
-                        rs.getInt("orderId"),
-                        rs.getString("customerId"),
-                        rs.getDate("orderDate"),
-                        rs.getString("menuName"));
+            
+            for (OrderDto order: orderList) {
+              System.out.printf(" %d \t %d \t %s    %s	   %s \n",
+            		  order.getOrderId(),
+            		  order.getCustomerId(),
+            		  order.getOrderDate(),
+            		  order.getMenuName());
             }
+//            while (rs.next()) {
+//                System.out.printf(" %d \t %d \t %s    %s	   %s \n",
+//                        i++,
+//                        rs.getInt("orderId"),
+//                        rs.getString("customerId"),
+//                        rs.getDate("orderDate"),
+//                        rs.getString("menuName"));
+//            }
             renderSys.printDivider(renderSys.WIDTH, true);
             renderSys.printEmptyLine(2);
-        } catch (SQLException e) {
+//        } catch (SQLException e) {
+		  } catch (Exception e) {
         		renderSys.printStatus("주문 내역 조회 중 오류가 발생했습니다.", false);
             e.printStackTrace();
         }
@@ -441,22 +454,34 @@ public class OrderUI {
             renderSys.printEmptyLine(2);
             if (customerId.equalsIgnoreCase("q")) return;
 
-            ResultSet rs = orderDao.getMemberPointInfo(customerId);
-            if (rs.next()) {
-                int stamp = rs.getInt("stamp");
-                int coupon = rs.getInt("coupon");
-                
-                renderSys.printTitle(renderSys.WIDTH, "내 포인트");
-                System.out.println("회원번호 : " + rs.getString("customer_id"));
-                System.out.println("스 탬 프 : " + renderSys.printStamp(stamp));
-                System.out.println("쿠    폰 : " + coupon + "장");
+            PointItemDto pointItem = orderDao.getMemberPointInfo(customerId);
+//            ResultSet rs = orderDao.getMemberPointInfo(customerId);
+            
+            if (pointItem != null) {
+            	int stamp = pointItem.getStamp();
+            	int coupon = pointItem.getCoupon();
+            	
+            	renderSys.printTitle(renderSys.WIDTH, "내 포인트");
+            	
+            	System.out.println("회원번호 : " + pointItem.getCustomerId());
+            	System.out.println("스 탬 프 : " + renderSys.printStamp(stamp));
+            	System.out.println("쿠    폰 : " + coupon + "장");
+//            if (rs.next()) {
+//                int stamp = rs.getInt("stamp");
+//                int coupon = rs.getInt("coupon");
+//                
+//                renderSys.printTitle(renderSys.WIDTH, "내 포인트");
+//                System.out.println("회원번호 : " + rs.getString("customer_id"));
+//                System.out.println("스 탬 프 : " + renderSys.printStamp(stamp));
+//                System.out.println("쿠    폰 : " + coupon + "장");
                 renderSys.printDivider(renderSys.WIDTH, true);
             } else {
             		renderSys.printEmptyLine(2);
             		renderSys.printStatus("회원 정보를 찾을 수 없습니다.", false);
             }
             renderSys.printEmptyLine(2);
-        } catch (SQLException e) {
+        } catch (Exception e) {
+//        } catch (SQLException e) {
         		renderSys.printEmptyLine(2);
         		renderSys.printStatus("포인트 조회 중 오류가 발생했습니다.", false);
         		renderSys.printEmptyLine(2);

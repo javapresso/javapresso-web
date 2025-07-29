@@ -3,7 +3,7 @@
 <%@ taglib prefix="util" tagdir="/WEB-INF/tags" %>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
-<util:layout menuList="${menuList}">
+<util:layout menuList="${sideMenus}">
 	<h2>이곳은 메뉴 상세 조회 페이지입니다.</h2>
 </util:layout>
 
