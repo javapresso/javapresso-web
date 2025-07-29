@@ -2,23 +2,45 @@
 <%@ taglib prefix="util" tagdir="/WEB-INF/tags"%>
 
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<fmt:setLocale value="${sessionScope.selectedLocale}" />
+<fmt:setBundle basename="messages" />
 <util:layout menuList="${sideMenus}">
-  <div class="order-result">주문완료</div>
-    <div class="result-card">
-      <div class="result-info"> <strong>${customerId}</strong> 주문이 완료되었습니다.</div>
-        <div class="result-info">감사합니다.   빠르게 준비해드릴게요!<br/><br/><br/></div>
-          <div class="result-info">
-              픽업 완료 후 스탬프 개수 : <strong>${point.stamp}</strong>
-          </div>
-        <div class="result-info">
-          	픽업 완료 쿠폰 개수 : <strong>${point.coupon}</strong>
-        </div>
-      <div class="rabbit-wrapper">
-      <img class="rabbit-icon" src="${pageContext.request.contextPath}/public/images/rabbit.png" alt="rabbit" />
-		</div>
-  </div>	
-  <div class="button-group">
-    <button class="check-button" onclick="location.href='${pageContext.request.contextPath}/order/selectform'">확인</button>
+<div class="order-result">
+  <fmt:message key="ordInsertRst.title" />
+</div>
+
+<div class="result-card">
+  <div class="result-info">
+    <strong>${customerId}</strong> <fmt:message key="ordInsertRst.orderState" />
   </div>
+
+  <div class="result-info">
+    <fmt:message key="ordInsertRst.thkMsg" /><br /><br /><br />
+  </div>
+
+  <div class="result-info">
+    <fmt:message key="ordInsertRst.stamp" /> :
+    <strong>${point.stamp}</strong>
+  </div>
+
+  <div class="result-info">
+    <fmt:message key="ordInsertRst.coupon" /> :
+    <strong>${point.coupon}</strong>
+  </div>
+
+  <div class="rabbit-wrapper">
+    <img class="rabbit-icon"
+         src="${pageContext.request.contextPath}/public/images/rabbit.png"
+         alt="rabbit" />
+  </div>
+</div>
+
+<div class="button-group">
+  <button class="check-button"
+          onclick="location.href='${pageContext.request.contextPath}/order/selectform'">
+    <fmt:message key="ordInsertRst.buttonConfirm" />
+  </button>
+</div>
 </util:layout>
 <%@ include file="/WEB-INF/views/common/footer.jsp"%>
