@@ -116,6 +116,33 @@ public class OrderDao {
     }
   }
 
+  //
+  // // 추가했음
+  // public MenuDto getMenuByName(String name) {
+  // try (Connection con = dataSource.getConnection()) {
+  // String sql =
+  // "SELECT menu_id, menu_name, price, description, image_path, category_name, is_ice_selectable
+  // FROM menus WHERE menu_name = ?";
+  // PreparedStatement stmt = con.prepareStatement(sql);
+  // stmt.setString(1, name);
+  // ResultSet rs = stmt.executeQuery();
+  // if (rs.next()) {
+  // MenuDto dto = new MenuDto();
+  // dto.setMenuName(rs.getString("menu_name"));
+  // dto.setPrice(rs.getInt("price"));
+  // dto.setDescription(rs.getString("description"));
+  // dto.setCategoryName(rs.getString("category_name"));
+  // dto.setIceable(rs.getInt("is_ice_selectable") == 1);
+  // dto.setImagePath(rs.getString("image_path"));
+  // return dto;
+  // }
+  // } catch (SQLException e) {
+  // e.printStackTrace();
+  // }
+  // return null;
+  // }
+
+
   // 기존 회원인가 확인
   public boolean isMemberExists(String customerId) throws SQLException {
     String sql = "SELECT 1 FROM members WHERE customer_id = ?";

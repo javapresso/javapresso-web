@@ -5,6 +5,8 @@
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/order/couponcheck.css" />
 
+<!-- 쿠폰확인페이지 -->
+
 <util:layout menuList="${sideMenus}">
       <h1 class="membership-title">쿠폰 확인</h1>
         <p class="membership-desc">회원번호를 입력하고 적립된 쿠폰과 스탬프 개수를 확인하세요.</p>
