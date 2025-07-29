@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="util" tagdir="/WEB-INF/tags"%>
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/order/insert_result.css" />
-
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <util:layout menuList="${sideMenus}">
   <div class="order-result">주문완료</div>

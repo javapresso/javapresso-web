@@ -5,7 +5,6 @@
     	<img class="login-logo" src="${pageContext.request.contextPath}/public/images/logo.png" alt="Javapresso" />
         <span class="tagline">빠른 행복의 시작 자바프레소</span>
     </div>
-    
     <div class="right-section">
         <h2 class="login-title">관리자 로그인</h2>
         <form action="login/post" method="post">
