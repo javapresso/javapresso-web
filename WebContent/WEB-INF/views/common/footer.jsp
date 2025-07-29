@@ -1,14 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<fmt:setLocale value="${sessionScope.selectedLocale}" />
+<fmt:setBundle basename="messages" />
 
 <div class="footer-container">
 	<footer class="footer">
-	  <p>&copy; 2025 우리 팀 프로젝트</p>
-	  <p>
-	    GitHub: 
-	    <a href="https://github.com/javapresso" target="_blank" rel="noopener noreferrer">
-	      https://github.com/your-team-account
-	    </a>
-	  </p>
+		<p>&copy; <fmt:message key="footer.title" /></p>
+		<p>
+			GitHub:
+			<a href="https://github.com/javapresso" target="_blank" rel="noopener noreferrer">
+				https://github.com/javapresso
+			</a>
+		</p>
 	</footer>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
