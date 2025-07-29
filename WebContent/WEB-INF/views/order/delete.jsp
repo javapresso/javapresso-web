@@ -3,7 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="util" tagdir="/WEB-INF/tags"%>
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
+
 <link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/order/orderdelete.css" />
+
 <util:layout menuList="${sideMenus}">
 	<h1 class="insertemployee">주문내역 삭제</h1>
 	<div class="content-title">최근 1시간 이내 주문내역입니다.</div>
