@@ -13,7 +13,7 @@ import javax.naming.NamingException;
 import org.apache.tomcat.jdbc.pool.DataSource;
 
 public class MenuDao {
-  	static DataSource dataSource = null;
+	static DataSource dataSource = null;
 	
 	static {
 		try {
@@ -23,208 +23,42 @@ public class MenuDao {
 			e.printStackTrace();
 		}
 	}
-  
-  public ArrayList<String> getMenuNames() {
-    ArrayList<String> menuList = new ArrayList<>();
 
-    try (Connection con = dataSource.getConnection()) {
+	public void insertMenu (String subCategory, String menuName, int price, String description, int iceable, String filePath) {
+		Connection con = null;
 
-      String sql = "SELECT menu_name FROM menus";
+		try {
+			con = dataSource.getConnection();
+			con.setAutoCommit(false);
 
-      PreparedStatement stmt = con.prepareStatement(sql);
-      ResultSet rs = stmt.executeQuery();
+			String sql = "INSERT INTO menus ("
+					+ "category_name, menu_name, price, description, iceable, is_soldout, thumbnail_path"
+					+ ") VALUES (?, ?, ?, ?, ?, 0, ?)";
 
-      while (rs.next()) {
-        String menuName = rs.getString("menu_name");
-        menuList.add(menuName);
-      }
-    } catch (SQLException e) {
-      e.printStackTrace();
-    }
+			PreparedStatement stmt = con.prepareStatement(sql);
 
-    return menuList;
+			stmt.setString(1, subCategory);
+			stmt.setString(2, menuName);
+			stmt.setInt(3, price);
+			stmt.setString(4, description);
+			stmt.setInt(5, iceable);
+			stmt.setString(6, filePath);
 
-  }
+			int insertMenuCount = stmt.executeUpdate();
 
-  // 메뉴 등록하기
-  public void insertMenu(String subCategory, String menuName, int price, String description,
-      int iceable) {
-    Connection con = null;
+			if (insertMenuCount == 0) {
+				throw new RuntimeException();
+			}
 
-    try {
-      con = dataSource.getConnection();
-      con.setAutoCommit(false);
-
-      String sql = "INSERT INTO menus ("
-          + "category_name, menu_name, price, description, iceable, is_soldout"
-          + ") VALUES (?, ?, ?, ?, ?, 0)";
-
-      PreparedStatement stmt = con.prepareStatement(sql);
-
-      stmt.setString(1, subCategory);
-      stmt.setString(2, menuName);
-      stmt.setInt(3, price);
-      stmt.setString(4, description);
-      stmt.setInt(5, iceable);
-
-      int insertMenuCount = stmt.executeUpdate();
-
-      if (insertMenuCount == 0) {
-        throw new RuntimeException();
-      }
-
-      con.commit();
-    } catch (SQLException e) {
-      e.printStackTrace();
-      throw new RuntimeException(e);
-    } finally {
-      try {
-        con.setAutoCommit(true);
-      } catch (Exception e1) {
-      }
-      if (con != null)
-        try {
-          con.close();
-        } catch (Exception e) {
-        }
-    }
-  }
-
-  public void deleteMenu(String tartgetMenu) {
-    Connection con = null;
-
-    try {
-      con = dataSource.getConnection();
-      con.setAutoCommit(false);
-
-      String sql = "DELETE FROM menus WHERE menu_name = ?";
-
-      PreparedStatement stmt = con.prepareStatement(sql);
-      stmt.setString(1, tartgetMenu);
-
-      int deleteRow = stmt.executeUpdate();
-
-      if (deleteRow == 0) {
-        throw new RuntimeException();
-      }
-
-      con.commit();
-    } catch (SQLException e) {
-      System.out.println(e.getMessage());
-      try {
-        con.rollback();
-      } catch (Exception e2) {
-      }
-      throw new RuntimeException();
-    } finally {
-      try {
-        con.setAutoCommit(true);
-      } catch (Exception e3) {
-      }
-      if (con != null)
-        try {
-          con.close();
-        } catch (Exception e) {
-        }
-    }
-  }
-
-  public void updateMenu(String columnName, int updateNumber, String targetMenu) {
-    Connection con = null;
-
-    try {
-      con = dataSource.getConnection();
-      con.setAutoCommit(false);
-
-      String sql = "UPDATE menus SET " + columnName + " = ? WHERE menu_name = ?";
-
-      PreparedStatement stmt = con.prepareStatement(sql);
-      stmt.setInt(1, updateNumber);
-      stmt.setString(2, targetMenu);
-
-      int updateRow = stmt.executeUpdate();
-      if (updateRow == 0) {
-        throw new RuntimeException();
-      }
-      con.commit();
-    } catch (SQLException e) {
-      e.printStackTrace();
-      try {
-        con.rollback();
-      } catch (Exception e2) {
-      }
-      throw new RuntimeException();
-    } finally {
-      try {
-        con.setAutoCommit(true);
-      } catch (Exception e3) {
-      }
-      if (con != null)
-        try {
-          con.close();
-        } catch (Exception e) {
-        }
-    }
-  }
-
-  public void updateMenu(String columnName, String updateString, String targetMenu) {
-    Connection con = null;
-
-    try {
-      con = dataSource.getConnection();
-      con.setAutoCommit(false);
-
-      String sql = "UPDATE menus SET " + columnName + " = ? WHERE menu_name = ?";
-
-      PreparedStatement stmt = con.prepareStatement(sql);
-      stmt.setString(1, updateString);
-      stmt.setString(2, targetMenu);
-
-      int updateRow = stmt.executeUpdate();
-      if (updateRow == 0) {
-        throw new RuntimeException();
-      }
-      con.commit();
-    } catch (SQLException e) {
-      e.printStackTrace();
-      try {
-        con.rollback();
-      } catch (Exception e2) {
-      }
-      throw new RuntimeException();
-    } finally {
-      try {
-        con.setAutoCommit(true);
-      } catch (Exception e3) {
-      }
-      if (con != null)
-        try {
-          con.close();
-        } catch (Exception e) {
-        }
-    }
-  }
-
-
-  public String getThumbnailPath(String menuName) throws SQLException {
-    String thumnail_path = null;
-    try (Connection con = dataSource.getConnection()) {
-
-      String sql = "SELECT thumnail_path " + "FROM menus " + "WHERE menu_name = ?";
-
-      PreparedStatement stmt = con.prepareStatement(sql);
-      stmt.setString(1, menuName);
-
-      ResultSet rs = stmt.executeQuery();
-
-      if (rs.next())
-        thumnail_path = rs.getString("THUMBNAIL_PATH");
-    } catch (SQLException e) {
-      e.printStackTrace();
-    }
-
-    return thumnail_path;
-  }
+			con.commit();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		} finally {
+			try {con.setAutoCommit(true);} catch (Exception e1) {}
+			if (con != null) try { con.close(); } catch (Exception e) {}
+		}
+	}
 
 	public List<String> getMenuHeader() {
 
@@ -320,43 +154,6 @@ public class MenuDao {
 
 		return menuList;
 
-	}
-
-	// 메뉴 등록하기
-	public void insertMenu (String subCategory, String menuName, int price, String description, int iceable, String filePath) {
-		Connection con = null;
-
-		try {
-			con = dataSource.getConnection();
-			con.setAutoCommit(false);
-
-			String sql = "INSERT INTO menus ("
-					+ "category_name, menu_name, price, description, iceable, is_soldout, thumbnail_path"
-					+ ") VALUES (?, ?, ?, ?, ?, 0, ?)";
-
-			PreparedStatement stmt = con.prepareStatement(sql);
-
-			stmt.setString(1, subCategory);
-			stmt.setString(2, menuName);
-			stmt.setInt(3, price);
-			stmt.setString(4, description);
-			stmt.setInt(5, iceable);
-			stmt.setString(6, filePath);
-
-			int insertMenuCount = stmt.executeUpdate();
-
-			if (insertMenuCount == 0) {
-				throw new RuntimeException();
-			}
-
-			con.commit();
-		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new RuntimeException(e);
-		} finally {
-			try {con.setAutoCommit(true);} catch (Exception e1) {}
-			if (con != null) try { con.close(); } catch (Exception e) {}
-		}
 	}
 
 	public void deleteMenu (String tartgetMenu) {

@@ -21,8 +21,9 @@ public class MenuInsertPostHandler implements CommandHandler {
 	
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) {
+		String uploadDirPath = request.getServletContext().getInitParameter("UPLOAD_DIR");
 		String fileName = "default_image.png";
-		
+		String relativeFilePath = fileName;
 		
 		try {
 			Part filePart = request.getPart("imageFile");

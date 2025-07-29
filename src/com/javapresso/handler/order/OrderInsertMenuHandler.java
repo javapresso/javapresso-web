@@ -9,7 +9,6 @@ import com.javapresso.dto.MenuItemDto;
 import com.javapresso.handler.CommandHandler;
 
 public class OrderInsertMenuHandler implements CommandHandler {
-
   @Override
   public String process(HttpServletRequest request, HttpServletResponse response) {
     OrderDao dao = new OrderDao();
