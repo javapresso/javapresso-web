@@ -13,10 +13,12 @@ public class OrderInsertGetHandler implements CommandHandler {
   public String process(HttpServletRequest request, HttpServletResponse response) {
 
     System.out.println("=====test 디버깅 orderinsertgethandler =====");
+
+
     String menuName = request.getParameter("menuName");
     if (menuName == null || menuName.isEmpty()) {
       request.setAttribute("error", "메뉴 이름이 전달되지 않았습니다.");
-      return "/WEB-INF/views/error.jsp";
+      return "error/error404.jsp";
     }
 
     OrderDao dao = new OrderDao();
@@ -32,7 +34,7 @@ public class OrderInsertGetHandler implements CommandHandler {
 
     if (menu == null) {
       request.setAttribute("error", "해당 메뉴를 찾을 수 없습니다.");
-      return "/WEB-INF/views/error.jsp";
+      return "error/error404.jsp";
     }
 
     request.setAttribute("menu", menu);

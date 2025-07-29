@@ -1,0 +1,78 @@
+ @charset "UTF-8";
+
+/* 타이틀 */
+.order-result {
+  font-size: 36px;
+  font-weight: 800;
+  color: #5E4B4B;
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+/* 카드 */
+.result-card {
+  margin-left: 6%;
+  background: #ffffff;
+  border: 1.5px solid #E0DCDC;
+  border-radius: 20px;
+  padding: 40px 32px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  max-width: 760px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* 텍스트 */
+.result-info {
+  font-size: 17px;
+  color: #3a3a3a;
+  line-height: 1.7;
+  margin-top: 4px;
+}
+
+.result-info strong {
+  color: #F06A7E;
+  font-weight: 700;
+}
+
+/* 아이콘 컨테이너 */
+.stamp-container,
+.coupon-container {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.stamp-icon,
+.coupon-icon {
+  width: 40px;
+  height: 40px;
+}
+
+/* 버튼 영역 */
+.button-group {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+/* 확인 버튼 */
+.check-button {
+  padding: 18px 40px;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: #F06A7E;
+  color: #fff;
+  border: none;
+  border-radius: 35px;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.check-button:hover {
+  background-color: #d54d62;
+}

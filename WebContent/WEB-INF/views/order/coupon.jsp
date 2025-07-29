@@ -8,6 +8,7 @@
 <!-- 쿠폰확인페이지 -->
 
 <util:layout menuList="${sideMenus}">
+<div class="coupon_check">
       <h1 class="membership-title">쿠폰 확인</h1>
         <p class="membership-desc">회원번호를 입력하고 적립된 쿠폰과 스탬프 개수를 확인하세요.</p>
         <p class="membership-desc">음료 스탬프 <strong>10개</strong> 적립시 커피 <strong>무료 쿠폰</strong> 증정</p>     
@@ -21,5 +22,6 @@
     <input class="btn-earn-points" type="submit" value="확인하기" />
   </div>
 </form>
+</div>
 </util:layout>
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>

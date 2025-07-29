@@ -22,8 +22,8 @@
 						<th scope="col">메뉴명</th>
 						<th scope="col">가격</th>
 						<th scope="col">메뉴설명</th>
-						<th scope="col">솔드아웃</th>
-						<th scope="col">iceable</th>
+						<!-- <th scope="col">솔드아웃</th> -->
+						<!-- <th scope="col">iceable</th> -->
 					</tr>
 				</thead>
 				<c:forEach var="menu" items="${menuList}">
@@ -34,8 +34,8 @@
 						<td>${menu.menuName}</td>
 						<td>${menu.price}</td>
 						<td>${menu.description}</td>
-						<td>${menu.isSoldout}</td>
-						<td>${menu.iceable}</td>
+						<%-- <td>${menu.isSoldout}</td> --%>
+						<%-- <td>${menu.iceable}</td> --%>
 					</tr>
 				</tbody>
 				</c:forEach>
