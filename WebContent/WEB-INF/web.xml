@@ -33,12 +33,19 @@
       <filter-name>AuthFilter</filter-name>
       <filter-class>com.javapresso.filter.AuthFilter</filter-class>
   </filter>
-  <!-- 모든 JSP 페이지에 대한 인증 필터 적용 (로그인 페이지 제외) -->
   <filter-mapping>
       <filter-name>AuthFilter</filter-name>
       <url-pattern>/employee/*</url-pattern>
       <url-pattern>/menu/*</url-pattern>
   </filter-mapping>
+  <context-param>
+    <param-name>WIN_FILE_DIR</param-name>
+    <param-value>C:\\share</param-value>
+  </context-param>
+  <context-param>
+    <param-name>LINUX_FILE_DIR</param-name>
+    <param-value>/usr/local/tomcat/webapps/images</param-value>
+  </context-param>
   <servlet>
     <servlet-name>DispatcherServlet</servlet-name>
     <servlet-class>com.javapresso.web.DispatcherServlet</servlet-class>
@@ -46,15 +53,11 @@
       <param-name>configFile</param-name>
       <param-value>/WEB-INF/command.properties</param-value>
     </init-param>
-    <init-param>
-      <param-name>UPLOAD_DIR</param-name>
-      <param-value>/usr/local/tomcat/images</param-value>
-    </init-param>
     <load-on-startup>1</load-on-startup>
     <multipart-config>
-       	<max-file-size>10485760</max-file-size>
-        <max-request-size>20971520</max-request-size>
-        <file-size-threshold>1048576</file-size-threshold>
+      <max-file-size>10485760</max-file-size>
+      <max-request-size>20971520</max-request-size>
+      <file-size-threshold>1048576</file-size-threshold>
     </multipart-config>
   </servlet>
   <servlet>
