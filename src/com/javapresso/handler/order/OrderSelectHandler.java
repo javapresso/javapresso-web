@@ -11,6 +11,8 @@ public class OrderSelectHandler implements CommandHandler {
 
   @Override
   public String process(HttpServletRequest request, HttpServletResponse response) {
+
+
     // 주문내역 확인 페이지
     OrderDao dao = new OrderDao();
     List<OrderDto> orderList = dao.getOrderList();
