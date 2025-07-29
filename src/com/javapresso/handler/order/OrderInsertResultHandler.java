@@ -18,12 +18,20 @@
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.javapresso.dao.OrderDao;
+import com.javapresso.dto.PointItemDto;
 import com.javapresso.handler.CommandHandler;
 
 public class OrderInsertResultHandler implements CommandHandler {
 
-  @Override
-  public String process(HttpServletRequest request, HttpServletResponse response) {
-    return "/WEB-INF/views/order/insert_result.jsp";
-  }
+	@Override
+	public String process(HttpServletRequest request, HttpServletResponse response) {
+		OrderDao dao = new OrderDao();
+
+		String customerId = request.getParameter("id");
+		PointItemDto point = dao.getMemberPointInfo(customerId);
+		request.setAttribute("point", point);
+		return "/order/insert_result.jsp";
+	}
 }

@@ -1,6 +1,93 @@
 @charset "UTF-8";
 
-.order_menu{
-	 margin-top: 2%;
-	 margin-bottom:1%
+.inner-content{
+	margin-top:5%;
+	margin-left:8%;
 }
+
+.order-title {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.membership-title {
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 29px;
+  margin-bottom: 20px;
+}
+
+.membership-desc {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 23px;
+  margin-bottom: 10px;
+  color: #666;
+}
+
+.input-wrapper {
+  margin-top: 25px;
+  margin-bottom: 40px;
+  width: 430px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.phonenumber {
+  width: 100%;
+  height: 45px;
+  padding: 8px 15px;
+  font-size: 18px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.checkbox-label {
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #444;
+}
+
+.request-label {
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  color: #444;
+}
+
+.request-input {
+  margin-top: 6px;
+  height: 43px;
+  padding: 8px 12px;
+  font-size: 17px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-submit {
+  width: 200px;
+  height: 55px;
+  background-color: #F06A7E;
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-submit:hover {
+  background-color: #d4586e;
+}
+  
