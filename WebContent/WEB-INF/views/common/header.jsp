@@ -27,7 +27,7 @@
 	    <nav class="main-nav">
 	        <ul>
 	            <li><a href="${pageContext.request.contextPath}/menu/">메뉴 조회</a></li>
-	            <li><a href="${pageContext.request.contextPath}/member/">직원관리</a></li>
+	            <li><a href="${pageContext.request.contextPath}/employee">직원관리</a></li>
 	            <li><a href="${pageContext.request.contextPath}/order/menu">주문관리</a></li>
 	        </ul>
 	    </nav>

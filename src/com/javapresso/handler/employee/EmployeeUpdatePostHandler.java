@@ -26,6 +26,6 @@ public class EmployeeUpdatePostHandler implements CommandHandler {
 		}
 		
 		// 직원 전체 조회로 이동
-		return "redirect:/employee/selectall";
+		return "redirect:/employee/select";
 	}
 }

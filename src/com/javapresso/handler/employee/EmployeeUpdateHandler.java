@@ -19,6 +19,6 @@ public class EmployeeUpdateHandler implements CommandHandler {
 		request.setAttribute("empList", empList);
 		request.setAttribute("action", "update");
 		
-		return "employee/select_all.jsp";
+		return "employee/select.jsp";
 	}
 }
