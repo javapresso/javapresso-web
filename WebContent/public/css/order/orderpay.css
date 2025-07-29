@@ -1,0 +1,94 @@
+@charset "UTF-8";
+
+
+/* 결제수단 선택하기 */
+.payment-title {
+  font-size: 32px;
+  font-weight: 400;
+  margin-bottom: 40px;
+  color: #000;
+}
+
+.payment-options {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.payment-option {
+  display: flex;
+  align-items: center;
+  position: relative;
+  background: #fff;
+  border: 1px solid #5e4b4b;
+  border-radius: 10px;
+  padding: 14px 20px;
+  font-size: 24px;
+  font-family: 'Inter';
+  color: #000;
+  cursor: pointer;
+}
+
+.payment-option input[type="radio"] {
+  display: none;
+}
+
+.custom-radio {
+  width: 22px;
+  height: 22px;
+  background: #d9d9d9;
+  border-radius: 50%;
+  margin-right: 20px;
+  position: relative;
+}
+
+.payment-option input[type="radio"]:checked + .custom-radio::after {
+  content: "";
+  width: 13px;
+  height: 13px;
+  background: #000;
+  border-radius: 50%;
+  position: absolute;
+  top: 4.5px;
+  left: 4.5px;
+}
+
+
+  .button-group {
+    display: flex;
+    gap: 30px;
+    
+  margin-top: 60px;
+  justify-content: center;
+  }
+
+  .btn-cancel {
+    width: 225px;
+    height: 70px;
+    background: #3A3A4A;
+    border-radius: 20px;
+    color: #fff;
+    font-weight: 300;
+    font-size: 30px;
+    line-height: 35px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .btn-confirm{
+    width: 225px;
+    height: 70px;
+    background: #F06A7E;
+    border:none;
+    border-radius: 20px;
+    color: #fff;
+    font-weight: 300;
+    font-size: 30px;
+    line-height: 35px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }

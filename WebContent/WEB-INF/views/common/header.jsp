@@ -3,18 +3,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>빠른 행복의 시작 JAVAPRESSO</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-<link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/gmarket-sans.css" rel="stylesheet"> 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/global.css" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/layout.css" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/sidebar.css" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/insert.css" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/header.css" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/footer.css" />
-
+	<meta charset="UTF-8">
+	<title>빠른 행복의 시작 JAVAPRESSO</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+	<link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/gmarket-sans.css" rel="stylesheet"> 
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/global.css" />
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/layout.css" />
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/sidebar.css" />
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/insert.css" />
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/header.css" />
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/footer.css" />
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/modal.css" />
 </head>
 <body>
 <div class="header-container">

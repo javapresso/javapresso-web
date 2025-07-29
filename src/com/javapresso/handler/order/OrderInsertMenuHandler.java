@@ -12,31 +12,48 @@ public class OrderInsertMenuHandler implements CommandHandler {
 
   @Override
   public String process(HttpServletRequest request, HttpServletResponse response) {
-    // 주문하기 - 메뉴/옵션 선택 페이지
     OrderDao dao = new OrderDao();
-    ArrayList<MenuItemDto> menuList = dao.getMenuItems();
-    // request.setAttribute("menuList", menuList);
+    List<MenuItemDto> menuList = dao.getMenuItems();
 
-    // parentName과 categoryName 리스트 추출해야함.. 테이블이 다르니까
     List<String> parentList = new ArrayList<>();
-    List<String> categoryList = new ArrayList<>();
+    List<String> childList = new ArrayList<>();
 
     for (MenuItemDto item : menuList) {
       if (!parentList.contains(item.getParentName())) {
         parentList.add(item.getParentName());
       }
-      if (!categoryList.contains(item.getCategoryName())) {
-        categoryList.add(item.getCategoryName());
+    }
+
+    String selectedBig = request.getParameter("parent");
+    if (selectedBig == null || selectedBig.isEmpty()) {
+      selectedBig = parentList.isEmpty() ? "" : parentList.get(0);
+    }
+
+    for (MenuItemDto item : menuList) {
+      if (item.getParentName().equals(selectedBig) && !childList.contains(item.getCategoryName())) {
+        childList.add(item.getCategoryName());
       }
     }
 
-    // JSP로 넘길 데이터 - 카테고리도 따로 받아와야하는데 안받아옴..
-    request.setAttribute("menuList", menuList); // 메뉴 전체
-    request.setAttribute("parentName", parentList); // 상위 카테고리
-    request.setAttribute("categoryName", categoryList); // 하위 카테고리
+    String selectedSmall = request.getParameter("child");
+    if (selectedSmall == null || selectedSmall.isEmpty()) {
+      selectedSmall = childList.isEmpty() ? "" : childList.get(0);
+    }
 
+    List<MenuItemDto> filteredMenuList = new ArrayList<>();
+    for (MenuItemDto item : menuList) {
+      if (item.getParentName().equals(selectedBig)
+          && item.getCategoryName().equals(selectedSmall)) {
+        filteredMenuList.add(item);
+      }
+    }
+
+    request.setAttribute("bigCategories", parentList);
+    request.setAttribute("smallCategories", childList);
+    request.setAttribute("menuList", filteredMenuList);
+    request.setAttribute("selectedBig", selectedBig);
+    request.setAttribute("selectedSmall", selectedSmall);
 
     return "order/new_menu.jsp";
   }
-
 }

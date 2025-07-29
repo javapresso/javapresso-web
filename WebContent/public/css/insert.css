@@ -7,23 +7,16 @@
 .content-box {
   display: flex;
   flex-direction: column;
-  gap: 52px;
+  gap: 25px;
   border: none;
-  margin-bottom: 80px;
+  margin-bottom: 30px;
 }
 
 .category-box {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 25px;
   border: none;
-}
-
-.input-wrapper {
-  display: flex;
-  border: none;
-  width: 813px;
-  justify-content: space-between;
 }
 
 .image-box {
@@ -49,7 +42,7 @@
 }
 
 .image-button {
-  padding: 7px 20px;
+  padding: 5px 15px;
   font-size: 14px;
   background-color: white;
   border-radius: 20px;
@@ -58,7 +51,7 @@
 .image-button-wrapper {
   width: 200px;
   display: flex;
-  flex-direction: justify-content;
+  justify-content: space-between;
 }
 
 .title {
@@ -107,26 +100,85 @@
 }
 
 .button-wrapper {
+  width: 100%;
+  padding: 0 90px;
   display: flex;
-  width: 612px;
   justify-content: space-between;
   border: none;
 }
 
 .button {
-  width: 225px;
-  height: 70px;
+  padding: 10px 50px;
   background-color: black;
   display: flex;
   justify-content: center;
   text-align: center;
   align-items: center;
   border: none;
-  border-radius: 20px;
+  border-radius: 30px;
   color: white;
-  font-size: 30px;
+  font-size: 20px;
 }
 
 .pink {
   background-color: #f06a7e;
+}
+
+.input-box {
+  display: flex;
+  border: none;
+  width: 813px;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.flex-column-wrapper {
+  border: none;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  gap: 30px;
+}
+
+.input {
+  padding: 5px 35px;
+  border-radius: 20px;
+  width: 100%;
+  font-size: 20px;
+  border: 1px solid #5e4b4b;
+}
+
+.input-line {
+  display: flex;
+  border: none;
+  width: 489px;
+  justify-content: space-between;
+  margin: 0;
+  gap: 20px;
+}
+
+.flex-column {
+  border: none;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  gap: 15px;
+}
+
+.radio-box {
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0 10px;
+  font-size: 15px;
+}
+
+.radio-wrapper {
+  border: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
 }

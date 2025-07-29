@@ -10,4 +10,5 @@ public class MenuDto {
 	private String description;
 	private boolean isSoldout;
 	private boolean iceable;
+	private String thumbnailPath;
 }

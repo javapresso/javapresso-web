@@ -187,6 +187,7 @@ public class MenuUI {
 		                System.out.println("  메뉴 가격   :  " + price);
 		                System.out.println("  아이스 가능 :  " + (iceable == 1 ? "가능" : "불가능"));
 		                System.out.println("  메뉴 설명   :  " + description);
+		                System.out.println("  대표이미지   :  " + "deafult_image.png");
 		                renderSys.printDivider(renderSys.WIDTH, false);
 		                renderSys.printInputFormMessage("이대로 추가할까요? (Y: 예/N: 아니오)");
 		                
@@ -240,7 +241,7 @@ public class MenuUI {
 		            }
 					
 					try {
-						menuDao.insertMenu(subCategory, menuName, price, description, iceable);
+						menuDao.insertMenu(subCategory, menuName, price, description, iceable, "deafult_image.png");
 						renderSys.printEmptyLine(2);
 						renderSys.printStatus("메뉴가 정상적으로 추가되었습니다.", true);
 						renderSys.printEmptyLine(1);

@@ -1,0 +1,54 @@
+.modal-backdrop {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2); /* 어둡게 반투명 처리 */
+  backdrop-filter: blur(3px); /* 흐림 효과 */
+  transition: opacity 0.3s;
+  opacity: 1;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #ebebeb;
+  padding: 50px 60px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+}
+
+.modal_item {
+  display: flex;
+  border: none;
+  flex-direction: column;
+  gap: 35px;
+}
+
+.modal_button_wrapper {
+  border: none;
+  display: flex;
+  width: max-content;
+  justify-content: space-evenly;
+}
+
+.modal_button {
+  background-color: #3a3a4a;
+  font-size: 30px;
+  padding: 10px 40px;
+  border-radius: 25px;
+  color: white;
+}
+
+.modal_content {
+  font-size: 25px;
+}
+
+.modal_button.pink {
+  background-color: #f06a7e;
+  border: none;
+}
