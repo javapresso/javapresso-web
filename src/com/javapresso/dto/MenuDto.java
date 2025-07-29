@@ -4,15 +4,11 @@ import lombok.Data;
 
 @Data
 public class MenuDto {
-  private String categoryName;
-  private String menuName;
-  private int price;
-  private String description;
-  private boolean isSoldout;
-  private boolean iceable;
-
-  public void setImagePath(String string) {
-    // TODO Auto-generated method stub
-
-  }
+	private String categoryName;
+	private String menuName;
+	private int price;
+	private String description;
+	private boolean isSoldout;
+	private boolean iceable;
+	private String thumbnailPath;
 }

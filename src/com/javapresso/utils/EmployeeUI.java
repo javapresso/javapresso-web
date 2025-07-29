@@ -1,9 +1,11 @@
 package com.javapresso.utils;
 
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.javapresso.dao.EmployeeDao;
+import com.javapresso.dto.EmployeeDto;
 
 public class EmployeeUI {
 	EmployeeDao empDao = new EmployeeDao();
@@ -122,25 +124,35 @@ public class EmployeeUI {
 	public void getEmployeeAll(Scanner read) {
 		try {
 			// DB에서 모든 직원정보 불러오기
-			ResultSet rs = empDao.getEmployeeAll();
-			
+//			ResultSet rs = empDao.getEmployeeAll();
+			ArrayList<EmployeeDto> employeeList = empDao.getEmployeeAll();
 			// 부제목 출력
 			renderSys.printSubTitle(renderSys.WIDTH, "전체 직원정보 조회");
 			System.out.printf("%3s\t%6s\t%6s\t%10s\t%10s\t%13s\n",
 					"ID", "이름", "전화번호", "급여", "직급", "이번달 매출");
 			renderSys.printDivider(renderSys.WIDTH, true);
 			
-			// 읽어온 직원 정보 출력
-			while (rs.next()) {
-				System.out.printf("%3s\t%6s\t%12s\t%,14d\t%10s\t%,16d\t%8s\n",
-						rs.getInt("employee_id"),
-						rs.getString("name"),
-						rs.getString("phone"),
-						rs.getInt("salary"),
-						rs.getString("title"),
-						rs.getInt("performance"),
-						rs.getInt("manager_id") == 0 ? "" : rs.getInt("manager_id"));	
+
+			for (EmployeeDto employee: employeeList) {
+				System.out.printf("%3s\t%6s\t%12s\t%,14d\t%10s\t%8s\n",
+						employee.getEmployeeId(),
+						employee.getEmployeeName(),
+						employee.getPhoneNumber(),
+						employee.getSalary(),
+						employee.getTitle(),
+						employee.getManagerId());
 			}
+			// 읽어온 직원 정보 출력
+//			while (rs.next()) {
+//				System.out.printf("%3s\t%6s\t%12s\t%,14d\t%10s\t%,16d\t%8s\n",
+//						rs.getInt("employee_id"),
+//						rs.getString("name"),
+//						rs.getString("phone"),
+//						rs.getInt("salary"),
+//						rs.getString("title"),
+//						rs.getInt("performance"),
+//						rs.getInt("manager_id") == 0 ? "" : rs.getInt("manager_id"));	
+//			}
 			renderSys.printDivider(renderSys.WIDTH, true);
 			renderSys.printEmptyLine(2);
 			
@@ -189,22 +201,23 @@ public class EmployeeUI {
 				}
 
 				// 수정할 직원 정보 조회
-				ResultSet targetEmp = empDao.getEmployee(targetId);
+				EmployeeDto employee = empDao.getEmployee(targetId);
+//				ResultSet targetEmp = empDao.getEmployee(targetId);
 				
 				// 수정할 직원 정보 조회 실패
-				if (!targetEmp.next()) { 
-					renderSys.printStatus("입력하신 ID의 직원이 존재하지 않습니다.", false);
-					renderSys.printEmptyLine(2);
-					continue;
-				}
-				
+//				if (!targetEmp.next()) { 
+//					renderSys.printStatus("입력하신 ID의 직원이 존재하지 않습니다.", false);
+//					renderSys.printEmptyLine(2);
+//					continue;
+//				}
+//				
 				// 선택한 직원의 수정 범위 선택하기
 				renderSys.printSubTitle(renderSys.WIDTH, "직원 정보 수정 - 수정할 내용 선택");
-				System.out.printf(" 1. 이름 수정하기 [현재값: %s]\n", targetEmp.getString("employee_name"));
-				System.out.printf(" 2. 번호 수정하기 [현재값: %s]\n", targetEmp.getString("phone_number"));
-				System.out.printf(" 3. 급여 수정하기 [현재값: %s]\n", targetEmp.getInt("salary"));
-				System.out.printf(" 4. 직급 수정하기 [현재값: %s]\n", targetEmp.getString("title"));
-				System.out.printf(" 5. 관리자 아이디 수정하기 [현재값: %s]\n", targetEmp.getInt("manager_id"));
+				System.out.printf(" 1. 이름 수정하기 [현재값: %s]\n", employee.getEmployeeName());
+				System.out.printf(" 2. 번호 수정하기 [현재값: %s]\n", employee.getPhoneNumber());
+				System.out.printf(" 3. 급여 수정하기 [현재값: %s]\n", employee.getSalary());
+				System.out.printf(" 4. 직급 수정하기 [현재값: %s]\n", employee.getTitle());
+				System.out.printf(" 5. 관리자 아이디 수정하기 [현재값: %s]\n", employee.getManagerId());
 				renderSys.printDivider(renderSys.WIDTH, true);
 				
 				while (true) {
@@ -260,12 +273,18 @@ public class EmployeeUI {
 							renderSys.printEmptyLine(2);
 							
 							// 입력한 ID의 관리자가 있는지 확인
-							ResultSet managerEmp = empDao.getEmployee(newManagerId);
-							if (!managerEmp.next()) { 
+							EmployeeDto targetEmployee = empDao.getEmployee(newManagerId);
+							if (targetEmployee == null) {
 								System.out.println("수정하려는 ID의 매니저가 존재하지 않습니다.");
 								renderSys.printEmptyLine(2);
 								continue;
 							}
+//							ResultSet managerEmp = empDao.getEmployee(newManagerId);
+//							if (!managerEmp.next()) { 
+//								System.out.println("수정하려는 ID의 매니저가 존재하지 않습니다.");
+//								renderSys.printEmptyLine(2);
+//								continue;
+//							}
 							break;
 						}
 						
