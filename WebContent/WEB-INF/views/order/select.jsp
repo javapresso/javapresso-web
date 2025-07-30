@@ -35,8 +35,8 @@
     <c:forEach var="order" items="${orderList}">
       <tr>
         <td>${order.orderId}</td>
-        <td>${order.customerId}</td>
         <td>${order.menuName}</td>
+        <td class="ord_phone">${order.customerId}</td>
         <td>
           <fmt:formatDate value="${order.orderDate}" pattern="yyyy-MM-dd HH:mm:ss" />
         </td>
@@ -48,4 +48,19 @@
 
 
 </util:layout>
+<script>
+	function formatPhoneNumber(raw) {
+		const num = raw.replace(/\D/g, '');
+		if (num.length === 11) {
+			return num.replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3');
+		}
+		return raw;
+	}
+	
+	document.addEventListener("DOMContentLoaded", () => {
+		document.querySelectorAll(".ord_phone").forEach(cell => {
+			cell.textContent = formatPhoneNumber(cell.textContent);
+		});
+	});
+</script>
 <%@ include file="/WEB-INF/views/common/footer.jsp"%>

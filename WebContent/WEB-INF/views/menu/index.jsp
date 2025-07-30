@@ -4,7 +4,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <util:layout menuList="${sideMenus}">
-	<h2>이곳은 메뉴의 홈입니다.</h2>
 		<section class="content_categories">
 		<div>
 			<table class="table">
@@ -22,7 +21,7 @@
 						<tr id="${menu.menuName}" class="menu_row">
 							<td>${menu.categoryName}</td>
 							<td>${menu.menuName}</td>
-							<td>${menu.price}</td>
+							<td><fmt:formatNumber value="${menu.price}" type="number" /></td>
 							<td>${menu.description}</td>
 							<td><c:choose>
 							    <c:when test="${menu.iceable == 1}">가능</c:when>
