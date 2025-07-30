@@ -63,10 +63,12 @@
 	</table>
 
 	<c:if test="${action eq 'update'}">
-		<div class="button-group">
-			<button type="button" class="btn-update" onclick="updateHandler()">
-				<fmt:message key="empSel.ButtonUpdate" />
-			</button>
+		<div>
+			<div class="button-group">
+				<button type="button" class="btn-update" onclick="updateHandler()">
+					<fmt:message key="empSel.ButtonUpdate" />
+				</button>
+			</div>
 		</div>
 	</c:if>
 	<c:if test="${action eq 'delete'}">
