@@ -1,26 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="util" tagdir="/WEB-INF/tags"%>
-<%@ include file="/WEB-INF/views/common/header.jsp"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ include file="/WEB-INF/views/common/header.jsp"%>
 <fmt:setLocale value="${sessionScope.selectedLocale}" />
 <fmt:setBundle basename="messages" />
-<link rel="stylesheet"
-    href="${pageContext.request.contextPath}/public/css/order/orderform1.css" />
 <util:layout menuList="${sideMenus}">
 <div class="big-category">Categories</div>
-
 <div class="buttongroup big-category-group">
-  <c:forEach var="cat" items="${bigCategories}">
-    <form method="get" action="${pageContext.request.contextPath}/order/insert/menu" style="display:inline;">
-      <input type="hidden" name="parent" value="${cat}" />
-      <button type="submit" class="big-category-button ${cat eq selectedBig ? 'active' : ''}">
-        ${cat}
-      </button>
-    </form>
-  </c:forEach>
+	<c:forEach var="cat" items="${bigCategories}">
+	    <form method="get" action="${pageContext.request.contextPath}/order/insert/menu" style="display:inline;">
+	    	<input type="hidden" name="parent" value="${cat}" />
+	    		<button type="submit" class="big-category-button ${cat eq selectedBig ? 'active' : ''}">
+	    			${cat}
+    			</button>
+	    </form>
+	</c:forEach>
 </div>
-
 <div class="small-category">
   <div class="buttongroup small-category-group">
     <c:forEach var="cat" items="${smallCategories}">

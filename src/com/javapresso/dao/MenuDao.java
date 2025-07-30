@@ -119,6 +119,10 @@ public class MenuDao {
 	public void insertMenu (String subCategory, String menuName, int price, String description, int iceable, String filePath) {
 		Connection con = null;
 
+		System.out.println("subCategory" + subCategory);
+		System.out.println("menuName" + menuName);
+		System.out.println("description" + description);
+		
 		try {
 			con = dataSource.getConnection();
 			con.setAutoCommit(false);

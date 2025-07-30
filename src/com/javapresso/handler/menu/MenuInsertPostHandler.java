@@ -84,13 +84,16 @@ public class MenuInsertPostHandler implements CommandHandler {
 		}
 			
 		try {
+			System.out.println("getParameter(\"selectedCategory\")" + request.getParameter("selectedCategory"));
 			String subCategory = request.getParameter("selectedCategory");
+			System.out.println("subCategory" + subCategory);
 			String menuName = request.getParameter("menu_name");
 			int price = Integer.parseInt(request.getParameter("menu_price"));
 			String description = request.getParameter("description");
 			int iceable = "true".equals(request.getParameter("iceable")) ? 1 : 0;
 			
 			menuDao.insertMenu(subCategory, menuName, price, description, iceable, relativeFilePath);
+			System.out.println("dao insert 완료");
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
