@@ -39,7 +39,7 @@ public class SideMenuListFilter implements Filter {
 			menuList.add(new SideMenuItem(bundle.getString("sidebar.orderDelete"), "/order/deleteform"));
 			menuList.add(new SideMenuItem(bundle.getString("sidebar.orderCoupon"), "/order/couponform"));
 		} else if (uri.startsWith("/menu")) {
-			menuList.add(new SideMenuItem(bundle.getString("sidebar.menuSelect"), "/menu/selectform"));
+			menuList.add(new SideMenuItem(bundle.getString("sidebar.menuSelect"), "/menu"));
 			menuList.add(new SideMenuItem(bundle.getString("sidebar.menuInsert"), "/menu/insertform"));
 			menuList.add(new SideMenuItem(bundle.getString("sidebar.menuUpdate"), "/menu/updateform"));
 			menuList.add(new SideMenuItem(bundle.getString("sidebar.menuDelete"), "/menu/deleteform"));
