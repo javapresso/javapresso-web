@@ -1,5 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<fmt:setLocale value="${sessionScope.selectedLocale}" />
+<fmt:setBundle basename="messages" />
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -12,20 +15,28 @@
   <link href="gmarket-sans.css" rel="stylesheet"> 
 </head>
 <body>
-  <div class="error-container">
-    <img src="${pageContext.request.contextPath}/public/images/warning.png" alt="Authorization Error" class="warning-icon" />
+<div class="error-container">
+    <img src="${pageContext.request.contextPath}/public/images/warning.png" alt="<fmt:message key='authError.AltText' />" class="warning-icon" />
+    
     <c:choose>
-	    <c:when test="${not empty error}">
-	        <h3 class="warning-title">${error}</h3>
-	    </c:when>
-	    <c:otherwise>
-	        <h3 class="warning-title">알 수 없는 오류가 발생했습니다.</h3>
-	    </c:otherwise>
-	</c:choose>
-	<div class="error-button-wrapper">
-	    <button class="button-main" onclick="location.href='/login' ">로그인 하러가기</button>
-    	<button class="button-main" onclick="location.href='/order' ">주문 하러가기</button>
-	</div>
-  </div>
+        <c:when test="${not empty error}">
+            <h3 class="warning-title">${error}</h3>
+        </c:when>
+        <c:otherwise>
+            <h3 class="warning-title">
+                <fmt:message key="authError.UnknownMessage" />
+            </h3>
+        </c:otherwise>
+    </c:choose>
+    
+    <div class="error-button-wrapper">
+        <button class="button-main" onclick="location.href='/login' ">
+            <fmt:message key="authError.ButtonLogin" />
+        </button>
+        <button class="button-main" onclick="location.href='/order' ">
+            <fmt:message key="authError.ButtonOrder" />
+        </button>
+    </div>
+</div>
 </body>
 </html>
