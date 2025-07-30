@@ -15,6 +15,6 @@ public class EmployeeDeletePostHandler implements CommandHandler {
 		dao.deleteEmployee(id);
 		
 		// 직원 전체 조회로 이동
-		return "redirect:/employee/selectall";
+		return "redirect:/employee/select";
 	}
 }
