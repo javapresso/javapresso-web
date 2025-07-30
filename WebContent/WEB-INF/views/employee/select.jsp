@@ -54,9 +54,9 @@
 					</c:if>
 					<td>${emp.employeeId}</td>
 					<td>${emp.employeeName}</td>
-					<td>${emp.phoneNumber}</td>
+					<td class="emp_phone">${emp.phoneNumber}</td>
 					<td>${emp.title}</td>
-					<td>${emp.salary}</td>
+					<td><fmt:formatNumber value="${emp.salary}" type="number" /></td>
 				</tr>
 			</c:forEach>
 		</tbody>
@@ -102,5 +102,19 @@
 		document.getElementById('deleteId').value = selected.value;
 		document.getElementById('deleteForm').submit();
 	}
+	
+	function formatPhoneNumber(raw) {
+		const num = raw.replace(/\D/g, '');
+		if (num.length === 11) {
+			return num.replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3');
+		}
+		return raw;
+	}
+
+	document.addEventListener("DOMContentLoaded", () => {
+		document.querySelectorAll(".emp_phone").forEach(cell => {
+			cell.textContent = formatPhoneNumber(cell.textContent);
+		});
+	});
 </script>
 <%@ include file="/WEB-INF/views/common/footer.jsp"%>

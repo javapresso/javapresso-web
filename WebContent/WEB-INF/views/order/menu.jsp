@@ -34,7 +34,7 @@
             <td>${menu.parentName}</td>
             <td>${menu.categoryName}</td>
             <td>${menu.menuName}</td>
-            <td>${menu.price}</td>
+            <td><fmt:formatNumber value="${menu.price}" type="number" /></td>
             <td>${menu.description}</td>
           </tr>
         </tbody>
