@@ -35,27 +35,6 @@
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/order/orderdelete.css" />
 </head>
 <body>
-<<<<<<< HEAD
-	<div class="header-container">
-		<header class="site-header">
-		    <div class="logo">
-		        <a href="${pageContext.request.contextPath}/">
-		            <img src="${pageContext.request.contextPath}/public/images/logo.png" alt="Javapresso" />
-		        </a>
-		    </div>
-		    <nav class="main-nav">
-		        <ul class="menu-wrapper">
-		            <li><a href="${pageContext.request.contextPath}/menu">메뉴관리</a></li>
-		            <li><a href="${pageContext.request.contextPath}/employee">직원관리</a></li>
-		            <li><a href="${pageContext.request.contextPath}/order/menuform">주문관리</a></li>
-		            <c:if test="${not empty sessionScope.userId}">
-					    <button class="logout_button" onclick="location.href='${pageContext.request.contextPath}/logout'">로그아웃</button>
-					</c:if>
-		        </ul>
-		    </nav>
-		</header>
-	</div>
-=======
 <div class="header-container">
   <header class="site-header">
     <div class="logo">
@@ -65,7 +44,7 @@
     </div>
 
     <nav class="main-nav">
-      <ul>
+      <ul class="menu-wrapper">
         <li>
           <a href="${pageContext.request.contextPath}/order/menuform">
             <fmt:message key="header.order" />
@@ -92,4 +71,3 @@
     </nav>
   </header>
 </div>
->>>>>>> dev

@@ -73,10 +73,7 @@ public class OrderDao {
 			// 1. 주문 INSERT
 			String orderSql = "INSERT INTO orders (order_id, order_date, customer_id, menu_name, request, is_ice, use_coupon) "
 					+ "VALUES (order_seq.nextval, SYSDATE, ?, ?, ?, ?, ?)";
-<<<<<<< HEAD
-          
-=======
->>>>>>> dev
+
 			PreparedStatement stmt = con.prepareStatement(orderSql);
 			stmt.setString(1, customerId);
 			stmt.setString(2, menuName);
