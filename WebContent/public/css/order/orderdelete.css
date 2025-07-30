@@ -57,7 +57,7 @@ input[type="radio"] {
   }
 
  .btn-delete{
-   width: 225px;
+/*    width: 225px;
    height: 70px;
    background: #F06A7E;
    border:none;
@@ -69,7 +69,17 @@ input[type="radio"] {
    cursor: pointer;
    display: flex;
    justify-content: center;
-   align-items: center;
+   align-items: center; */
+  width: 200px;
+  height: 55px;
+  background-color: #F06A7E;
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s
  }
 
   /* 모달 */

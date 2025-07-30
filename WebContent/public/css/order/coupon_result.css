@@ -61,7 +61,7 @@
 
 /* 확인 버튼 */
 .check-button {
-  padding: 18px 40px;
+/*   padding: 18px 40px;
   font-size: 20px;
   font-weight: bold;
   background-color: #F06A7E;
@@ -70,7 +70,17 @@
   border-radius: 35px;
   transition: background-color 0.3s ease;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer; */
+  width: 200px;
+  height: 55px;
+  background-color: #F06A7E;
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-size: 20px;
+  font-weight: 500;
   cursor: pointer;
+  transition: background-color 0.3s
 }
 
 .check-button:hover {

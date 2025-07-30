@@ -85,7 +85,6 @@
 	      form.submit(); // 진짜 form 제출
 	    });
 	
-	    // 모달 외부 클릭 시 닫기
 	    window.addEventListener("click", function (e) {
 	      if (e.target === modal) {
 	        modal.style.display = "none";
