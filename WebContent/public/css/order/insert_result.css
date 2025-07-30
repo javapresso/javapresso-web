@@ -43,7 +43,7 @@
 }
 
 .check-button {
-  width: 240px;
+/*   width: 240px;
   height: 70px;
   background-color: #F06A7E;
   border: none;
@@ -52,28 +52,35 @@
   font-weight: 700;
   font-size: 28px;
   line-height: 33px;
-  cursor: pointer;
+  cursor: pointer; */
+  width: 200px;
+    height: 55px;
+    background-color: #F06A7E;
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s
 }
 
 .check-button:hover {
   background-color: #d3545f;
 }
 
-/* 토끼 이미지 wrapper (카드 오른쪽 아래에 위치) */
 .rabbit-wrapper {
   position: absolute;
   bottom: 10px;
   right: 16px;
 }
 
-/* 토끼 이미지 스타일 */
 .rabbit-icon {
   width: 70px;
   height: auto;
   animation: float 2s ease-in-out infinite;
 }
 
-/* 토끼 애니메이션 */
 @keyframes float {
   0%   { transform: translateY(0); }
   50%  { transform: translateY(-8px); }

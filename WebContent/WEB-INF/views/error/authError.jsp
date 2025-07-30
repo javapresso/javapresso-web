@@ -24,7 +24,7 @@
 	</c:choose>
 	<div class="error-button-wrapper">
 	    <button class="button-main" onclick="location.href='/login' ">로그인 하러가기</button>
-    	<button class="button-main" onclick="location.href='/order' ">주문 하러가기</button>
+    	<button class="button-main" onclick="location.href='/order/menuform' ">주문 하러가기</button>
 	</div>
   </div>
 </body>

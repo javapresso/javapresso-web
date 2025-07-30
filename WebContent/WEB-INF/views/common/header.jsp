@@ -51,7 +51,7 @@
           </a>
         </li>
         <li>
-          <a href="${pageContext.request.contextPath}/menu/">
+          <a href="${pageContext.request.contextPath}/menu">
             <fmt:message key="header.menu" />
           </a>
         </li>
