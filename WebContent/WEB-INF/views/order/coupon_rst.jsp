@@ -16,19 +16,19 @@
 		
 			<!-- 타이틀 -->
 			<div class="order-result">
-				<fmt:message key="my" /> <strong><fmt:message key="coupon" /></strong> <fmt:message key="list" />
+				<fmt:message key="ordCpRst.my" /> <strong><fmt:message key="ordCpRst.coupon" /></strong> <fmt:message key="ordCpRst.list" />
 			</div>
 
 			<!-- 카드 -->
 			<div class="result-card">
 				<div class="result-info">
-					<strong>${point.customerId}</strong> <fmt:message key="memberInfo" />
+					<strong>${point.customerId}</strong> <fmt:message key="ordCpRst.memberInfo" />
 				</div>
-				<div class="result-info"><fmt:message key="welcomeMsg" /></div>
+				<div class="result-info"><fmt:message key="ordCpRst.welcomeMsg" /></div>
 
 				<!-- 스탬프 시각화 -->
 				<div class="result-info">
-					<fmt:message key="stampCnt" /> : <strong>${point.stamp}</strong>
+					<fmt:message key="ordCpRst.stampCnt" /> : <strong>${point.stamp}</strong>
 				</div>
 				<div class="stamp-container">
 					<c:forEach var="i" begin="1" end="${point.stamp}">
@@ -40,7 +40,7 @@
 
 				<!-- 쿠폰 시각화 -->
 				<div class="result-info">
-					<fmt:message key="coupon" /> : <strong>${point.coupon}</strong>
+					<fmt:message key="ordCpRst.coupon" /> : <strong>${point.coupon}</strong>
 				</div>
 				<div class="coupon-container">
 					<c:forEach var="i" begin="1" end="${point.coupon}">
@@ -55,14 +55,14 @@
 		
 		<c:otherwise>
 			<div class="result-card">
-				<h2><fmt:message key="cannotfind" /></h2>
-				<p><fmt:message key="happyJavaPresso" /></p>
+				<h2><fmt:message key="ordCpRst.cannotfind" /></h2>
+				<p><fmt:message key="ordCpRst.happyJavaPresso" /></p>
 			</div>
 		</c:otherwise>
 	</c:choose>
 		
 	<div class="button-group">
-		<button class="check-button" onclick="location.href='${pageContext.request.contextPath}/order/insert/menu'"><fmt:message key="insert" /></button>
+		<button class="check-button" onclick="location.href='${pageContext.request.contextPath}/order/insert/menu'"><fmt:message key="ordCpRst.insert" /></button>
 	</div>
 </util:layout>
 <%@ include file="/WEB-INF/views/common/footer.jsp"%>
