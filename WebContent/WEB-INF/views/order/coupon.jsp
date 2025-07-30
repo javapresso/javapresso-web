@@ -12,18 +12,18 @@
 
 <util:layout menuList="${sideMenus}">
 <div class="coupon_check">
-      <h1 class="membership-title"><fmt:message key="title" /></h1>
-        <p class="membership-desc"><fmt:message key="subTitle" /></p>
-        <p class="membership-desc"><fmt:message key="desc" /></p>
+      <h1 class="membership-title"><fmt:message key="ordCp.title" /></h1>
+        <p class="membership-desc"><fmt:message key="ordCp.subTitle" /></p>
+        <p class="membership-desc"><fmt:message key="ordCp.desc" /></p>
     <form action="${pageContext.request.contextPath}/order/coupon" method="get">
   <div class="phone-input-wrapper">
     <input type="text" name="id" class="phonenumber" 
-    placeholder="<fmt:message key='phonePH' />"
+    placeholder="<fmt:message key='ordCp.phonePH' />"
     maxlength="11" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" required />
   </div>
   
   <div class="button-group">
-    <input class="btn-earn-points" type="submit" value="확인하기" />
+    <input class="btn-earn-points" type="submit" value="<fmt:message key='ordCp.confirm' />" />
   </div>
 </form>
 </div>
