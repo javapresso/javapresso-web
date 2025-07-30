@@ -55,7 +55,7 @@
           </a>
         </li>
         <li>
-          <a href="${pageContext.request.contextPath}/member/">
+          <a href="${pageContext.request.contextPath}/employee/select?page=1">
             <fmt:message key="header.employee" />
           </a>
         </li>

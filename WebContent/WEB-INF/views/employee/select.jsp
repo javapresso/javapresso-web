@@ -82,13 +82,6 @@
 	</c:if>
 </util:layout>
 <script>
-	document
-		.querySelectorAll('.sidebar_item')
-		.forEach(btn => btn.addEventListener('click', e => {
-			document.querySelectorAll('.sidebar_item').forEach(b => b.classList.remove('is-active'));
-			e.target.classList.add('is-active');
-		}));
-	
 	function updateHandler() {
 		const selected = document.querySelector('input[name="employeeId"]:checked');
 		if (!selected) {

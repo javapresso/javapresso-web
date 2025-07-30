@@ -44,10 +44,10 @@ public class SideMenuListFilter implements Filter {
 			menuList.add(new SideMenuItem(bundle.getString("sidebar.menuUpdate"), "/menu/updateform"));
 			menuList.add(new SideMenuItem(bundle.getString("sidebar.menuDelete"), "/menu/deleteform"));
 		} else if (uri.startsWith("/employee")) {
-			menuList.add(new SideMenuItem(bundle.getString("sidebar.employeeSelect"), "/employee/select"));
+			menuList.add(new SideMenuItem(bundle.getString("sidebar.employeeSelect"), "/employee/select?page=1"));
 			menuList.add(new SideMenuItem(bundle.getString("sidebar.employeeInsert"), "/employee/insert"));
-			menuList.add(new SideMenuItem(bundle.getString("sidebar.employeeUpdate"), "/employee/update"));
-			menuList.add(new SideMenuItem(bundle.getString("sidebar.employeeDelete"), "/employee/delete"));
+			menuList.add(new SideMenuItem(bundle.getString("sidebar.employeeUpdate"), "/employee/update?page=1"));
+			menuList.add(new SideMenuItem(bundle.getString("sidebar.employeeDelete"), "/employee/delete?page=1"));
 		} else {
 			// 기본메뉴
 		}

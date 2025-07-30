@@ -103,7 +103,7 @@ public class EmployeeDao {
 					+ "WHERE TRUNC(s.start_time, 'MM') = TRUNC(SYSDATE, 'MM') "
 					+ "GROUP BY s.employee_id) rst "
 					+ "ON e.employee_id = rst.employee_id "
-					+ "ORDER BY e.employee_id";
+					+ "ORDER BY e.employee_id DESC";
 			PreparedStatement stmt = con.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
 
@@ -117,6 +117,81 @@ public class EmployeeDao {
 				emp.setSalary(rs.getInt("salary"));
 				emp.setManagerId(rs.getInt("manager_id"));
 
+				empList.add(emp);
+			}
+
+			return empList;
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			return null;
+		}
+	}
+	
+	public int getTableSize() {
+		try (Connection con = dataSource.getConnection()) {
+			String sql = "SELECT COUNT(*) FROM employees";
+			PreparedStatement stmt = con.prepareStatement(sql);
+			ResultSet rs = stmt.executeQuery();
+			if (rs.next()) {
+				return rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		return 0;
+	}
+	
+	
+	/**
+	 * 직원 전체 조회하기
+	 * @param page 페이지 번호
+	 * @return 직원 데이터 리스트
+	 */
+	public ArrayList<EmployeeDto> getEmployeeAllPage(int page) {
+		int pageSize = 10;
+		int endRow = page * pageSize;
+		int startRow = (page - 1) * pageSize;
+
+		try (Connection con = dataSource.getConnection()) {
+			String sql = "SELECT * FROM ( "
+					+ "  SELECT ROWNUM AS rn, inner_query.* "
+					+ "  FROM ( "
+					+ "    SELECT "
+					+ "      e.employee_id AS employee_id, "
+					+ "      e.employee_name AS employee_name, "
+					+ "      e.phone_number AS phone_number, "
+					+ "      title, salary, manager_id, "
+					+ "      NVL(rst.total_price, 0) AS performance "
+					+ "    FROM employees e "
+					+ "    LEFT JOIN ( "
+					+ "      SELECT s.employee_id, SUM(m.price) AS total_price "
+					+ "      FROM schedule s "
+					+ "      LEFT JOIN orders o ON o.order_date BETWEEN s.start_time AND s.end_time "
+					+ "      LEFT JOIN menus m ON o.menu_name = m.menu_name "
+					+ "      WHERE TRUNC(s.start_time, 'MM') = TRUNC(SYSDATE, 'MM') "
+					+ "      GROUP BY s.employee_id "
+					+ "    ) rst ON e.employee_id = rst.employee_id "
+					+ "    ORDER BY e.employee_id DESC "
+					+ "  ) inner_query "
+					+ "  WHERE ROWNUM <= ? "
+					+ ") "
+					+ "WHERE rn > ?";
+
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setInt(1, endRow);
+			stmt.setInt(2, startRow);
+
+			ResultSet rs = stmt.executeQuery();
+
+			ArrayList<EmployeeDto> empList = new ArrayList<>();
+			while (rs.next()) {
+				EmployeeDto emp = new EmployeeDto();
+				emp.setEmployeeId(rs.getInt("employee_id"));
+				emp.setEmployeeName(rs.getString("employee_name"));
+				emp.setPhoneNumber(rs.getString("phone_number"));
+				emp.setTitle(rs.getString("title"));
+				emp.setSalary(rs.getInt("salary"));
+				emp.setManagerId(rs.getInt("manager_id"));
 				empList.add(emp);
 			}
 
