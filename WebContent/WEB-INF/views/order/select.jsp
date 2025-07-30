@@ -4,7 +4,6 @@
 <%@ taglib prefix="util" tagdir="/WEB-INF/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
-<%-- <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%> --%>
 
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/public/css/order/orderselect.css" />

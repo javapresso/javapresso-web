@@ -16,7 +16,10 @@ public class OrderInsertPostHandler implements CommandHandler {
 		String menuName = request.getParameter("menuName");
 		String requestText = request.getParameter("request");
 		boolean isIce = "1".equals(request.getParameter("ice"));
-		boolean useCouponParam = "1".equals(request.getParameter("coupon"));
+
+		String couponRawParam = request.getParameter("coupon");
+		boolean couponParamExists = couponRawParam != null;
+		boolean useCouponParam = "1".equals(couponRawParam);
 
 		OrderDao dao = new OrderDao();
 
@@ -44,18 +47,14 @@ public class OrderInsertPostHandler implements CommandHandler {
 		request.setAttribute("isIce", isIce);
 		request.setAttribute("couponCount", couponCount);
 
-		// 쿠폰이 있고, 쿠폰 사용 여부 결정 안 했으면 쿠폰 사용 여부 묻는 페이지로 이동 -> 쿠폰 사용여부 처음부터 안물어보고 쿠폰이 있는
-		// 경우만 물어보는 페이지 나오게
-		if (isMember && couponCount > 0 && !useCouponParam) {
+		if (isMember && couponCount > 0 && !couponParamExists) {
 			return "order/couponform.jsp";
 		}
 
-		// 쿠폰 사용 여부가 결정됐거나 쿠폰 없음 -> 주문 처리
 		boolean useCoupon = useCouponParam && couponCount > 0;
 		boolean success = dao.insertOrder(customerId, menuName, requestText, isIce, useCoupon);
 
 		if (success) {
-//			return "order/insert_result.jsp";
 			return "redirect:/order/insert/result?id=" + customerId;
 		} else {
 			request.setAttribute("error", "주문 처리 실패");
