@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -69,13 +68,15 @@ public class OrderDao {
 		}
 	}
 
-// 02. 주문하기
 	public boolean insertOrder(String customerId, String menuName, String request, boolean isIce, boolean useCoupon) {
 		try (Connection con = dataSource.getConnection()) {
-			// 1. 주문 insert
+			// 1. 주문 INSERT
 			String orderSql = "INSERT INTO orders (order_id, order_date, customer_id, menu_name, request, is_ice, use_coupon) "
 					+ "VALUES (order_seq.nextval, SYSDATE, ?, ?, ?, ?, ?)";
+<<<<<<< HEAD
           
+=======
+>>>>>>> dev
 			PreparedStatement stmt = con.prepareStatement(orderSql);
 			stmt.setString(1, customerId);
 			stmt.setString(2, menuName);
@@ -92,20 +93,18 @@ public class OrderDao {
 				updateCouponStmt.executeUpdate();
 			}
 
-			// 3. 스탬프 1 증가 (비회원 제외)
-			if (!Objects.isNull(customerId)) {
-				if (!customerId.trim().equals("")) {
-					if (this.isMemberExists(customerId)) {
-						String updateStampSql = "UPDATE members SET stamp = stamp + 1 WHERE customer_id = ?";
-						PreparedStatement updateStampStmt = con.prepareStatement(updateStampSql);
-						updateStampStmt.setString(1, customerId);
-						updateStampStmt.executeUpdate();
-					} else {
-						this.insertMember(customerId);
-					}
+			// 3. 스탬프 증가: 쿠폰을 사용하지 않은 경우에만
+			if (!useCoupon && customerId != null && !customerId.trim().equals("")) {
+				if (this.isMemberExists(customerId)) {
+					String updateStampSql = "UPDATE members SET stamp = stamp + 1 WHERE customer_id = ?";
+					PreparedStatement updateStampStmt = con.prepareStatement(updateStampSql);
+					updateStampStmt.setString(1, customerId);
+					updateStampStmt.executeUpdate();
+				} else {
+					this.insertMember(customerId); // 처음 방문 고객은 회원으로 등록 + stamp 1 부여
 				}
 
-				// 4. 스탬프가 10 이상이면 -> 스탬프 -10, 쿠폰 +1
+				// 4. 스탬프가 10 이상이면 → 쿠폰 지급
 				String checkSql = "SELECT stamp FROM members WHERE customer_id = ?";
 				PreparedStatement checkStmt = con.prepareStatement(checkSql);
 				checkStmt.setString(1, customerId);
@@ -122,10 +121,9 @@ public class OrderDao {
 					}
 				}
 			}
-			return true;
-		} catch (
 
-		SQLException e) {
+			return true;
+		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;
 		}

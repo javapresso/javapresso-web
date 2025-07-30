@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<fmt:setLocale value="${sessionScope.selectedLocale}" />
+<fmt:setBundle basename="messages" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,6 +35,7 @@
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/order/orderdelete.css" />
 </head>
 <body>
+<<<<<<< HEAD
 	<div class="header-container">
 		<header class="site-header">
 		    <div class="logo">
@@ -51,3 +55,41 @@
 		    </nav>
 		</header>
 	</div>
+=======
+<div class="header-container">
+  <header class="site-header">
+    <div class="logo">
+      <a href="${pageContext.request.contextPath}/">
+        <img src="${pageContext.request.contextPath}/public/images/logo.png" alt="Javapresso" />
+      </a>
+    </div>
+
+    <nav class="main-nav">
+      <ul>
+        <li>
+          <a href="${pageContext.request.contextPath}/order/menuform">
+            <fmt:message key="header.order" />
+          </a>
+        </li>
+        <li>
+          <a href="${pageContext.request.contextPath}/menu/">
+            <fmt:message key="header.menu" />
+          </a>
+        </li>
+        <li>
+          <a href="${pageContext.request.contextPath}/employee/select?page=1">
+            <fmt:message key="header.employee" />
+          </a>
+        </li>
+
+        <c:if test="${not empty sessionScope.userId}">
+          <button class="logout_button"
+                  onclick="location.href='${pageContext.request.contextPath}/logout'">
+            <fmt:message key="header.logout" />
+          </button>
+        </c:if>
+      </ul>
+    </nav>
+  </header>
+</div>
+>>>>>>> dev
