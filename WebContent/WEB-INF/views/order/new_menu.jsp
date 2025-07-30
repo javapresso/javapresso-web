@@ -38,7 +38,7 @@
         <form action="${pageContext.request.contextPath}/order/insert" method="get">
           <input type="hidden" name="menuName" value="${menu.menuName}" />
           <button type="submit" class="menu-card">
-            <div class="menu-img">이미지</div>
+          	<img class="menu-img" src="${pageContext.request.contextPath}/images/${menu.thumbnailPath}" id="menu-image" alt="메뉴 이미지" />
             <div class="menu-text">
               <div class="menu-name">${menu.menuName}</div>
               <div class="menu-price">${menu.price}원</div>

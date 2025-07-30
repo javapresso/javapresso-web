@@ -12,10 +12,9 @@
 					<tr>
 						<th scope="col">큰 카테고리</th>
 						<th scope="col">작은 카테고리</th>
-						<th scope="col">메뉴명</th>
 						<th scope="col">가격</th>
-						<th scope="col">메뉴설명</th>
-						<th scope="col">썸네일 이미지</th>
+						<th scope="col">매뉴설명</th>
+						<th scope="col">아이스가능</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -25,8 +24,11 @@
 							<td>${menu.menuName}</td>
 							<td>${menu.price}</td>
 							<td>${menu.description}</td>
-							<td>${menu.iceable}</td>
-							<td>${menu.thumbnailPath}</td>
+							<td><c:choose>
+							    <c:when test="${menu.iceable == 1}">가능</c:when>
+							    <c:otherwise>불가능</c:otherwise>
+							  </c:choose>
+						  	</td>
 						</tr>
 					</c:forEach>
 				</tbody>

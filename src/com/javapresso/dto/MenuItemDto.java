@@ -11,4 +11,5 @@ public class MenuItemDto {
 	public String description;
 	public int isSoldout;
 	public int iceable;
+	public String thumbnailPath;
 }

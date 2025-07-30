@@ -15,7 +15,7 @@ body {
   background: var(--main-bg);
 }
 
-.container {
+.employee-container {
   width: 1180px;
   height: 820px;
   margin: 0 auto;

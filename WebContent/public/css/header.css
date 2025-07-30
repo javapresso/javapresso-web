@@ -40,10 +40,20 @@
 }
 
 .logout_button {
-	border-radius: 10px;
+	border-radius: 15px;
 	color: white;
-	padding: 5px 10px;
+	padding: 6px 11px;
 	border : none;
 	background-color: #D95A6F;
 	text-align: center;
+}
+
+
+.menu-wrapper {
+	display: flex;
+	padding: 0;
+	margin: 0;
+	border: none;
+	justify-content:center;
+	align-items: center;
 }

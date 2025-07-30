@@ -22,7 +22,8 @@
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/employee/select.css" />
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/employee/insert.css" />
 	<!-- menu styles -->
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/insert.css" />
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/menu/insert.css" />
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/menu/detail.css" />
 	<!-- order styles -->
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/order/insert_result.css" />
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/order/menu.css" />
@@ -39,9 +40,9 @@
 		        </a>
 		    </div>
 		    <nav class="main-nav">
-		        <ul>
-		            <li><a href="${pageContext.request.contextPath}/menu/">메뉴 조회</a></li>
-		            <li><a href="${pageContext.request.contextPath}/member/">직원관리</a></li>
+		        <ul class="menu-wrapper">
+		            <li><a href="${pageContext.request.contextPath}/menu">메뉴관리</a></li>
+		            <li><a href="${pageContext.request.contextPath}/employee">직원관리</a></li>
 		            <li><a href="${pageContext.request.contextPath}/order/menuform">주문관리</a></li>
 		            <c:if test="${not empty sessionScope.userId}">
 					    <button class="logout_button" onclick="location.href='${pageContext.request.contextPath}/logout'">로그아웃</button>
