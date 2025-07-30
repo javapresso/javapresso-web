@@ -1,3 +1,4 @@
+@charset "UTF-8"
 
 /* 직원삭제하기  */
 .content-title {
@@ -79,10 +80,10 @@ input[type="radio"] {
 
 
 .button-group {
-
   margin: 5% auto 0 auto;
   display: flex;
   gap: 30px;
+  justify-content: flex-end;
 }
 
 .btn-earn-pass {

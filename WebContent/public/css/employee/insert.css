@@ -1,13 +1,9 @@
 
-.content-title1 {
-  width: 100%;
-  margin-top: 3%;
-  margin-bottom: 5%;
-}
-
 /* 직원추가하기 content */
 .content-title {
   width: 100%;
+  margin-top: 3%;
+  margin-bottom: 2%;
 }
 
 .input {
@@ -17,7 +13,6 @@
   font-size: 18px;
   border: 1px solid var(--sidebar-bg);
   border-radius: 8px;
-  margin-bottom: 2%;
 }
 
 
@@ -57,32 +52,27 @@ select.input:focus {
 }
 
 .btn-earn-pass {
-  width: 225px;
-  height: 70px;
-  background: #3A3A4A;
-  border-radius: 20px;
-  color: #fff;
-  font-weight: 300;
-  font-size: 30px;
-  line-height: 35px;
+  width: 200px;
+  height: 55px;
+  background-color: #3A3A4A;
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-size: 20px;
+  font-weight: 500;
   cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  transition: background-color 0.3s
 }
 
 .btn-earn-points {
-  width: 225px;
-  height: 70px;
-  background: #F06A7E;
+  width: 200px;
+  height: 55px;
+  background-color: #F06A7E;
   border: none;
-  border-radius: 20px;
-  color: #fff;
-  font-weight: 300;
-  font-size: 30px;
-  line-height: 35px;
+  border-radius: 12px;
+  color: white;
+  font-size: 20px;
+  font-weight: 500;
   cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  transition: background-color 0.3s
 }

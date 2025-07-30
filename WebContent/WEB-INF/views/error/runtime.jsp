@@ -15,18 +15,25 @@
   	  <title>JavaPresso</title>
 	</head>
 	<body>
-		<div class="error-container">
-			<img src="${pageContext.request.contextPath}/public/images/warning.png" alt="Authorization Error" class="warning-icon" />
-			<c:choose>
-			    <c:when test="${not empty error}">
-			        <h3 class="warning-title">${error}</h3>
-			    </c:when>
-			    <c:otherwise>
-			        <h3 class="warning-title">런타임 오류가 발생했습니다.</h3>
-			    </c:otherwise>
-			</c:choose>
-			<button class="button-main" onclick="location.href='/order/menuform' ">주문 페이지로</button>
-		</div>
+<div class="error-container">
+    <img src="${pageContext.request.contextPath}/public/images/warning.png" 
+         alt="<fmt:message key='runtimeError.AltText' />" class="warning-icon" />
+    
+    <c:choose>
+        <c:when test="${not empty error}">
+            <h3 class="warning-title">${error}</h3>
+        </c:when>
+        <c:otherwise>
+            <h3 class="warning-title">
+                <fmt:message key="runtimeError.UnknownMessage" />
+            </h3>
+        </c:otherwise>
+    </c:choose>
+    
+    <button class="button-main" onclick="location.href='/order/menuform' ">
+        <fmt:message key="runtimeError.ButtonOrder" />
+    </button>
+</div>
 	</body>
 </html>
 
