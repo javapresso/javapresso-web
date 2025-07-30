@@ -47,8 +47,6 @@
 				<fmt:message key="empIns.TableTitleValueParttime" />
 			</option>
 		</select>
-
-
 		<div class="content-title">
 			<fmt:message key="empIns.TableSalary" />
 		</div>
@@ -68,10 +66,10 @@
 	</form>
 </util:layout>
 <script>
-	document
-		.querySelectorAll('.sidebar_item')
-		.forEach(btn => btn.addEventListener('click', e => {
-			document.querySelectorAll('.sidebar_item').forEach(b => b.classList.remove('is-active'));
+	document.querySelectorAll('.sidebar_item').forEach(
+			btn => btn.addEventListener('click', e => {
+				document.querySelectorAll('.sidebar_item').forEach(b =>
+					b.classList.remove('is-active'));
 			e.target.classList.add('is-active');
 		}));
 

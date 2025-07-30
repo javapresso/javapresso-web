@@ -31,10 +31,15 @@ public class OrderDao {
 
 	public ArrayList<MenuItemDto> getMenuItems() {
 		try (Connection con = dataSource.getConnection()) {
-			String sql = "SELECT c.parent_name AS parentName, " + "       m.category_name AS categoryName, "
-					+ "       m.menu_name AS menuName, " + "       m.price AS price, "
-					+ "       m.description AS description, " + "       m.is_soldout AS isSoldout, "
-					+ "       m.iceable AS iceable " + "FROM menus m "
+			String sql = "SELECT c.parent_name AS parentName, " 
+					+ "       m.category_name AS categoryName, "
+					+ "       m.menu_name AS menuName, "
+					+ "       m.price AS price, "
+					+ "       m.description AS description, "
+					+ "       m.is_soldout AS isSoldout, "
+					+ "       m.iceable AS iceable, "
+					+ "		  m.thumbnail_path AS thumbnailPath "
+					+ "FROM menus m "
 					+ "JOIN categories c ON m.category_name = c.category_name "
 					+ "ORDER BY parent_name DESC, m.category_name";
 			PreparedStatement stmt = con.prepareStatement(sql);
@@ -50,6 +55,7 @@ public class OrderDao {
 				item.setDescription(rs.getString("description"));
 				item.setIsSoldout(rs.getInt("isSoldout"));
 				item.setIceable(rs.getInt("iceable"));
+				item.setThumbnailPath(rs.getString("thumbnailPath"));
 
 				menuList.add(item);
 			}
@@ -67,6 +73,7 @@ public class OrderDao {
 			// 1. 주문 INSERT
 			String orderSql = "INSERT INTO orders (order_id, order_date, customer_id, menu_name, request, is_ice, use_coupon) "
 					+ "VALUES (order_seq.nextval, SYSDATE, ?, ?, ?, ?, ?)";
+
 			PreparedStatement stmt = con.prepareStatement(orderSql);
 			stmt.setString(1, customerId);
 			stmt.setString(2, menuName);

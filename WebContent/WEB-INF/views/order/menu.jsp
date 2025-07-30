@@ -25,8 +25,6 @@
           <th scope="col"><fmt:message key="ordMenu.name" /></th>
           <th scope="col"><fmt:message key="ordMenu.price" /></th>
           <th scope="col"><fmt:message key="ordMenu.desc" /></th>
-          <%-- <th scope="col">솔드아웃</th> --%>
-          <%-- <th scope="col">iceable</th> --%>
         </tr>
       </thead>
 
@@ -38,8 +36,6 @@
             <td>${menu.menuName}</td>
             <td>${menu.price}</td>
             <td>${menu.description}</td>
-            <%-- <td>${menu.isSoldout}</td> --%>
-            <%-- <td>${menu.iceable}</td> --%>
           </tr>
         </tbody>
       </c:forEach>

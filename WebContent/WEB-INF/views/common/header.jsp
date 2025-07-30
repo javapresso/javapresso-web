@@ -25,7 +25,8 @@
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/employee/select.css" />
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/employee/insert.css" />
 	<!-- menu styles -->
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/insert.css" />
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/menu/insert.css" />
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/menu/detail.css" />
 	<!-- order styles -->
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/order/insert_result.css" />
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/order/menu.css" />
@@ -43,7 +44,7 @@
     </div>
 
     <nav class="main-nav">
-      <ul>
+      <ul class="menu-wrapper">
         <li>
           <a href="${pageContext.request.contextPath}/order/menuform">
             <fmt:message key="header.order" />

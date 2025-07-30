@@ -12,13 +12,6 @@
   margin-bottom: 30px;
 }
 
-.category-box {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-  border: none;
-}
-
 .image-box {
   display: flex;
   flex-direction: column;
@@ -29,7 +22,7 @@
   width: 194px;
   height: 194px;
   border: none;
-  background-color: #d9d9d9;
+  background-color: #ddd;
   border-radius: 10px;
   display: flex;
   justify-content: center;
@@ -37,8 +30,16 @@
 }
 
 .default_image {
-  width: 55px;
-  height: 55px;
+    width: 118px;
+    height: 118px;
+    border-radius: 16px;
+    background-color: #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    color: #666;
+    flex-shrink: 0;
 }
 
 .image-button {
@@ -138,7 +139,7 @@
   flex-direction: column;
   margin: 0;
   padding: 0;
-  gap: 30px;
+  gap: 15px;
 }
 
 .input {

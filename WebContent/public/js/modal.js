@@ -1,7 +1,8 @@
 const modalButtonHandler = btn => {
   if (btn.action === "submitForm") {
-    const form = document.querySelector('form[id$="Form"]');
-    if (form) form.submit();
+	  let formId = btn.formid;
+	  const form = document.getElementById(formId);
+	  if (form) form.submit();
   } else if (btn.action === "closeModal") {
     const modal = document.getElementById("modal");
     modal.style.display = "block";
@@ -11,6 +12,7 @@ const modalButtonHandler = btn => {
 };
 
 const showModal = (message, buttons) => {
+	console.log("전달받은 메세지", message);
   const modal = document.getElementById("modal");
   const modalBack = document.getElementById("modal-backdrop");
   const modalContent = document.getElementById("modal_content");
