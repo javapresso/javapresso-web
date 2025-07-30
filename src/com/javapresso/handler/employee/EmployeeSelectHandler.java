@@ -15,7 +15,20 @@ public class EmployeeSelectHandler implements CommandHandler {
 		// 직원 전체 조회하기 페이지
 		EmployeeDao dao = new EmployeeDao();
 		ArrayList<EmployeeDto> empList = new ArrayList<>();
-		empList = dao.getEmployeeAll();
+		
+		String pageNum = request.getParameter("page");
+		if (pageNum != null && pageNum != "") {
+			empList = dao.getEmployeeAllPage(Integer.parseInt(pageNum));
+			
+			request.setAttribute("currentPage", pageNum);
+			
+			int tableSize = dao.getTableSize();
+			int totalPages = (int) Math.ceil(tableSize / 10);
+			request.setAttribute("totalPages", totalPages);
+		} else {
+			empList = dao.getEmployeeAll();
+		}
+		
 		request.setAttribute("empList", empList);
 		request.setAttribute("action", "select");
 
