@@ -33,7 +33,7 @@
 				<div class="stamp-container">
 					<c:forEach var="i" begin="1" end="${point.stamp}">
 						<img class="stamp-icon"
-							src="${pageContext.request.contextPath}/public/images/stamp_${i <= point.stamp ? 'on' : 'off'}.png"
+							src="${pageContext.request.contextPath}/images/stamp_${i <= point.stamp ? 'on' : 'off'}.png"
 							alt="stamp" />
 					</c:forEach>
 				</div>
@@ -45,7 +45,7 @@
 				<div class="coupon-container">
 					<c:forEach var="i" begin="1" end="${point.coupon}">
 						<img class="coupon-icon"
-							src="${pageContext.request.contextPath}/public/images/coupon.png"
+							src="${pageContext.request.contextPath}/images/coupon.png"
 							alt="coupon" />
 					</c:forEach>
 				</div>

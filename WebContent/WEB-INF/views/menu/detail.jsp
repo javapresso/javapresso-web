@@ -5,7 +5,6 @@
 
 <util:layout menuList="${sideMenus}">
 	<div class="header-wrapper">
-		<h2>이곳은 메뉴 상세 조회 페이지입니다.</h2>
 		<div class="action-buttons">
 			<button type="button" class="action-btn edit-btn" onclick="enableEditMode()">수정하기</button>
 			<form id="deleteForm" action="/menu/delete" method="post" style="display:none;">

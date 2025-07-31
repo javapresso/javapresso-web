@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/index.css" />
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,26 +14,26 @@
         <!-- 왼쪽 섹션 -->
         <div class="index-left">
             <div class="logo-area">
-                <img src="${pageContext.request.contextPath}/public/images/logo.png"
+                <img src="${pageContext.request.contextPath}/images/logo.png"
                      alt="<fmt:message key='index.LogoAlt' />"
                      class="index-logo">
             </div>
             <div class="left-image-area">
-                <img src="${pageContext.request.contextPath}/public/images/logo2.png"
+                <img src="${pageContext.request.contextPath}/images/logo2.png"
                      alt="<fmt:message key='index.LeftImageAlt' />"
                      class="left-image">
             </div>
         </div>
         <div class="index-right">
             <div class="character-area">
-                <img src="${pageContext.request.contextPath}/public/images/logo3.png"
+                <img src="${pageContext.request.contextPath}/images/logo3.png"
                      alt="<fmt:message key='index.CharacterAlt' />"
                      class="character-image">
             </div>
         </div>
     </div>
     <div class="touch-area blinking" onclick="handleTouch()">
-        <img src="${pageContext.request.contextPath}/public/images/touch.png"
+        <img src="${pageContext.request.contextPath}/images/touch.png"
              alt="<fmt:message key='index.TouchAlt' />"
              class="touch-icon">
         <span class="touch-text">

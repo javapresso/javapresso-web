@@ -4,7 +4,6 @@
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
 <util:layout menuList="${sideMenus}">
-	<h2 class="title">이곳은 메뉴 추가 페이지입니다.</h2>
 	<form id="menuInsertForm" action="/menu/insert" method="post" enctype="multipart/form-data">
 		<div class="content-box">
 			<div class="flex-column-wrapper">
