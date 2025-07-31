@@ -1,16 +1,14 @@
-@charset "UTF-8"
-.content-title{
-    width: 100%;
-    margin-top: 3%;
-    margin-bottom: 2%;
+.content-title {
+  width: 100%;
+  margin-top: 3%;
+  margin-bottom: 2%;
 }
 
-/* content 내 테이블 스타일 */
 .content table {
   width: 100%;
   border-collapse: collapse;
   background: white;
-  box-shadow: 0 0 6px rgba(0,0,0,0.1);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   overflow: hidden;
 }
@@ -49,15 +47,15 @@
   justify-content: flex-end;
 }
 
-.btn-update{
+.btn-update {
   width: 200px;
   height: 55px;
-  background-color: #F06A7E;
+  background-color: #f06a7e;
   border: none;
   border-radius: 12px;
   color: white;
   font-size: 20px;
   font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.3s
+  transition: background-color 0.3s;
 }

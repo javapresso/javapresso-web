@@ -8,31 +8,19 @@
 <fmt:setBundle basename="messages" />
 
 <util:layout menuList="${sideMenus}">
-	<form class="form" method="post"
-		action="${pageContext.request.contextPath}/employee/insert.do">
-		<h1 class="insertemployee">
-			<fmt:message key="empIns.Title" />
-		</h1>
-		<div class="content-title1">
-			<fmt:message key="empIns.SubTitle" />
-		</div>
-
-		<div class="content-title">
-			<fmt:message key="empIns.TableName" />
-		</div>
+	<form class="form" method="post" action="${pageContext.request.contextPath}/employee/insert.do">
+		<h1 class="insertemployee"><fmt:message key="empIns.Title" /></h1>
+		<div class="content-title1"><fmt:message key="empIns.SubTitle" /></div>
+		<div class="content-title"><fmt:message key="empIns.TableName" /></div>
 		<input type="text" class="input"
 			placeholder="<fmt:message key='empIns.TableNamePH' />" name="name" />
-		<div class="content-title">
-			<fmt:message key="empIns.TablePhone" />
-		</div>
+		<div class="content-title"><fmt:message key="empIns.TablePhone" /></div>
 		<input type="text" class="input"
 			placeholder="<fmt:message key='empIns.TablePhonePH' />"
 			maxlength="11" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"
 			name="phone" />
 
-		<div class="content-title">
-			<fmt:message key="empIns.TableTitle" />
-		</div>
+		<div class="content-title"><fmt:message key="empIns.TableTitle" /></div>
 		<select class="input" name="title">
 			<option disabled selected>
 				<fmt:message key="empIns.TableTitleSelectSentence" />

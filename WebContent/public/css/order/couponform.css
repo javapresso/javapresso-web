@@ -1,8 +1,5 @@
 @charset "UTF-8";
 
- 
- @charset "UTF-8";
-
 /* 전체를 감싸는 모달 느낌의 배경 */
 .modal-container {
   position: relative;
@@ -72,7 +69,7 @@
 }
 
 .check-button.primary {
-  background-color: #F06A7E;
+  background-color: #f06a7e;
   color: white;
   border: none;
 }
@@ -83,11 +80,10 @@
 
 .check-button.secondary {
   background-color: white;
-  color: #F06A7E;
-  border: 2px solid #F06A7E;
+  color: #f06a7e;
+  border: 2px solid #f06a7e;
 }
 
 .check-button.secondary:hover {
   background-color: #fef0f2;
 }
- 

@@ -1,13 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="util" tagdir="/WEB-INF/tags"%>
-<%@ include file="/WEB-INF/views/common/header.jsp"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ include file="/WEB-INF/views/common/header.jsp"%>
 <fmt:setLocale value="${sessionScope.selectedLocale}" />
 <fmt:setBundle basename="messages" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/order/couponform.css" />
 <util:layout menuList="${sideMenus}">
-
 	<h3 class="modal-title"><fmt:message key="ordCpForm.title" /></h3>
 	<div class="modal-container">
 		<div class="coupon-modal-card">
@@ -15,9 +13,7 @@
 				<fmt:message key="ordCpForm.subTitle1" /> <strong>${couponCount}</strong><fmt:message key="ordCpForm.subTitle2" />
 			</p>
 			<p class="coupon-question"><fmt:message key="ordCpForm.question" /></p>
-
-			<form action="${pageContext.request.contextPath}/order/insert.do"
-				method="post" class="coupon-form">
+			<form action="${pageContext.request.contextPath}/order/insert.do" method="post" class="coupon-form">
 				<input type="hidden" name="phone" value="${customerId}" /> 
 				<input type="hidden" name="menuName" value="${menuName}" /> 
 				<input type="hidden" name="request" value="${requestText}" /> 
@@ -29,6 +25,5 @@
 			</form>
 		</div>
 	</div>
-	
 </util:layout>
 <%@ include file="/WEB-INF/views/common/footer.jsp"%>

@@ -2,7 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="util" tagdir="/WEB-INF/tags" %>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
-
 <util:layout menuList="${sideMenus}">
 	<div class="header-wrapper">
 		<div class="action-buttons">
@@ -34,32 +33,32 @@
 					</div>
 				</div>
 				<div class="edit-mode-category" style="display:none;">
-			        <div class="option-wrapper">
-			            <label class="option-title">대분류</label>
-			            <div class="option-box" id="parent-category">
-			                <c:forEach var="menu" items="${parentMenus}">
-			                    <button type="button" class="option ${menu == targetMenu.parentName ? 'pink' : ''}" 
-			                            data-id="${menu}" disabled>
-			                        ${menu}
-			                    </button>
-			                </c:forEach>
-			            </div>
-			        </div>
-			        <div class="option-wrapper">
-			            <label class="option-title">소분류</label>
-			            <div class="option-box" id="child-category">
-			                <!-- 초기 로딩 시 현재 선택된 부모의 자식 카테고리들을 표시 -->
-			                <c:forEach var="subMenu" items="${currentSubMenus}">
-			                    <button type="button" class="option ${subMenu == targetMenu.categoryName ? 'pink' : ''}" 
-			                            data-id="${subMenu}" disabled>
-			                        ${subMenu}
-			                    </button>
-			                </c:forEach>
-			            </div>
-			        </div>
+          <div class="option-wrapper">
+            <label class="option-title">대분류</label>
+            <div class="option-box" id="parent-category">
+              <c:forEach var="menu" items="${parentMenus}">
+                  <button type="button" class="option ${menu == targetMenu.parentName ? 'pink' : ''}" 
+                          data-id="${menu}" disabled>
+                      ${menu}
+                  </button>
+              </c:forEach>
+            </div>
+          </div>
+          <div class="option-wrapper">
+              <label class="option-title">소분류</label>
+              <div class="option-box" id="child-category">
+                  <!-- 초기 로딩 시 현재 선택된 부모의 자식 카테고리들을 표시 -->
+                  <c:forEach var="subMenu" items="${currentSubMenus}">
+                      <button type="button" class="option ${subMenu == targetMenu.categoryName ? 'pink' : ''}" 
+                              data-id="${subMenu}" disabled>
+                          ${subMenu}
+                      </button>
+                  </c:forEach>
+              </div>
+          </div>
 			        <!-- 선택된 카테고리를 전송할 hidden input -->
-			        <input type="hidden" name="selectedCategory" id="selectedCategory" value="${targetMenu.categoryName}" />
-			    </div>
+          <input type="hidden" name="selectedCategory" id="selectedCategory" value="${targetMenu.categoryName}" />
+        </div>
 			</div>
 			<div class="input-box">
 				<div class="image-box">
@@ -123,10 +122,10 @@
 	const childCategories = document.getElementById("child-category");
 	const viewModeCategory = document.querySelector('.view-mode-category');
 	const editModeCategory = document.querySelector('.edit-mode-category');
-	//원본 데이터 저장 (수정 취소 시 복원용)
+
 	const originalData = {
-	    parentName: '${targetMenu.parentName}',
-	    categoryName: '${targetMenu.categoryName}',
+    parentName: '${targetMenu.parentName}',
+    categoryName: '${targetMenu.categoryName}',
 		menuName: '${targetMenu.menuName}',
 		price: '${targetMenu.price}',
 		description: '${targetMenu.description}',
@@ -136,7 +135,6 @@
 	
 	// 수정 모드 활성화
 	function enableEditMode() {
-		// 버튼 토글
 		document.querySelector('.edit-btn').style.display = 'none';
 		document.querySelector('.delete-btn').style.display = 'none';
 		document.querySelector('.cancel-btn').style.display = 'inline-block';
@@ -152,10 +150,8 @@
 	        btn.disabled = false;
 	    });
 	    
-		// 이미지 업로드 버튼 표시
 		document.querySelector('.edit-mode-only').style.display = 'block';
 		
-		// 입력 필드 활성화
 		document.getElementById('menu_name').disabled = false;
 		document.getElementById('menu_price').disabled = false;
 		document.getElementById('description').disabled = false;
@@ -165,15 +161,12 @@
 		document.getElementById('upload-button').disabled = false;
 		document.querySelector('.image-button[value="삭제하기"]').disabled = false;
 		
-		// 읽기 전용 스타일 제거
 		document.querySelectorAll('.readonly-field').forEach(field => {
 			field.style.backgroundColor = 'white';
 		});
 	}
 	
-	// 수정 취소
 	function cancelEdit() {
-		// 버튼 토글
 		document.querySelector('.edit-btn').style.display = 'inline-block';
 		document.querySelector('.delete-btn').style.display = 'inline-block';
 		document.querySelector('.cancel-btn').style.display = 'none';
@@ -189,10 +182,8 @@
 		// 입력 필드 비활성화 및 원본 데이터 복원
 		document.getElementById('menu_name').value = originalData.menuName;
 		document.getElementById('menu_name').disabled = true;
-		
 		document.getElementById('menu_price').value = originalData.price;
 		document.getElementById('menu_price').disabled = true;
-		
 		document.getElementById('description').value = originalData.description;
 		document.getElementById('description').disabled = true;
 		

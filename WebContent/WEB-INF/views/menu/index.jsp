@@ -1,10 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="util" tagdir="/WEB-INF/tags" %>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <util:layout menuList="${sideMenus}">
-		<section class="content_categories">
+  <section class="content_categories">
 		<div>
 			<table class="table">
 				<thead>
@@ -37,11 +36,8 @@
 </util:layout>
 <script>
 	const menuItems = document.querySelectorAll(".menu_row");
-	console.log("menuItems", menuItems);
 	const menuClickHandler = (event) => {
 		const menuId = event.currentTarget.id;
-		
-		console.log("menuId from index.jsp: ", menuId);
 		
 		if (menuId) {
 			location.href = '<c:url value="/menu/detail"/>' + '?menuId=' + encodeURIComponent(menuId);

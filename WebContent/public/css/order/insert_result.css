@@ -30,7 +30,7 @@
 
 /* 강조 텍스트 */
 .result-info strong {
-  color: #D95A6F;
+  color: #d95a6f;
   font-weight: bold;
 }
 
@@ -43,26 +43,16 @@
 }
 
 .check-button {
-/*   width: 240px;
-  height: 70px;
-  background-color: #F06A7E;
-  border: none;
-  border-radius: 35px;
-  color: white;
-  font-weight: 700;
-  font-size: 28px;
-  line-height: 33px;
-  cursor: pointer; */
   width: 200px;
-    height: 55px;
-    background-color: #F06A7E;
-    border: none;
-    border-radius: 12px;
-    color: white;
-    font-size: 20px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.3s
+  height: 55px;
+  background-color: #f06a7e;
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .check-button:hover {
@@ -82,7 +72,13 @@
 }
 
 @keyframes float {
-  0%   { transform: translateY(0); }
-  50%  { transform: translateY(-8px); }
-  100% { transform: translateY(0); }
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }

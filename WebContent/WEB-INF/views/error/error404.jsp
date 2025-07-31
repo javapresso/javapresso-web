@@ -14,13 +14,12 @@
 	  <link href="gmarket-sans.css" rel="stylesheet"> 
 	</head>
 <body>
-<div class="error-container">
+  <div class="error-container">
     <img src="${pageContext.request.contextPath}/public/images/404error.png" 
-         alt="<fmt:message key='error404.AltText' />" class="sidebar_logo" />
-    
+        alt="<fmt:message key='error404.AltText' />" class="sidebar_logo" />
     <button class="button-main" onclick="location.href='/' ">
-        <fmt:message key="error404.ButtonHome" />
+      <fmt:message key="error404.ButtonHome" />
     </button>
-</div>
+  </div>
 </body>
 </html>

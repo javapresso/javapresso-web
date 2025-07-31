@@ -2,7 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="util" tagdir="/WEB-INF/tags" %>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
-
 <util:layout menuList="${sideMenus}">
 	<form id="menuInsertForm" action="/menu/insert" method="post" enctype="multipart/form-data">
 		<div class="content-box">
@@ -150,9 +149,6 @@
 	      console.log("eventTargetInfo", event.target);
 	      hiddenInput.value = event.target.getAttribute("data-id");
 	    }
-	
-	    console.log("선택된 카테고리:", event.target.textContent.trim());
-	    console.log("선택된 ID:", event.target.getAttribute("data-id"));
 	  }
 	};
 	

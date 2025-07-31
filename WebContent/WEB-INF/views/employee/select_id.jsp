@@ -1,12 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="util" tagdir="/WEB-INF/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="util" tagdir="/WEB-INF/tags"%>
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <fmt:setLocale value="${sessionScope.selectedLocale}" />
 <fmt:setBundle basename="messages" />
-
 <util:layout menuList="${sideMenus}">
 	<h1 class="insertemployee">
 		<fmt:message key="empSelId.Title" />
@@ -18,45 +16,49 @@
 		<table>
 			<tbody>
 				<tr id="row">
-					<td><input type="radio" name="editField" value="name"
-						id="editName" /> <label for="editName"> <fmt:message
-								key="empSelId.TableName" />
-					</label></td>
+					<td>
+            <input type="radio" name="editField" value="name" id="editName" />
+            <label for="editName">
+              <fmt:message key="empSelId.TableName" />
+					  </label>
+          </td>
 					<td id="fieldName">${emp.employeeName}</td>
 				</tr>
 				<tr id="row">
-					<td><input type="radio" name="editField" value="phone"
-						id="editPhone" /> <label for="editPhone"> <fmt:message
-								key="empSelId.TablePhone" />
-					</label></td>
+					<td>
+            <input type="radio" name="editField" value="phone" id="editPhone" />
+            <label for="editPhone">
+              <fmt:message key="empSelId.TablePhone" />
+					  </label>
+          </td>
 					<td id="fieldPhone">${emp.phoneNumber}</td>
 				</tr>
 				<tr id="row">
-					<td><input type="radio" name="editField" value="title"
-						id="editPosition" /> <label for="editPosition"> <fmt:message
-								key="empSelId.TableTitle" />
-					</label></td>
+					<td>
+            <input type="radio" name="editField" value="title" id="editPosition" />
+            <label for="editPosition">
+              <fmt:message key="empSelId.TableTitle" />
+            </label>
+          </td>
 					<td id="fieldPosition">${emp.title}</td>
 				</tr>
 				<tr id="row">
-					<td><input type="radio" name="editField" value="salary"
-						id="editSalary" /> <label for="editSalary"> <fmt:message
-								key="empSelId.TableSalary" />
-					</label></td>
+					<td>
+            <input type="radio" name="editField" value="salary" id="editSalary" />
+            <label for="editSalary">
+              <fmt:message key="empSelId.TableSalary" />
+					  </label>
+          </td>
 					<td id="fieldSalary">${emp.salary}</td>
 				</tr>
 			</tbody>
 		</table>
 	</div>
-	
 	<div id="editInputArea" style="margin-top: 20px;"></div>
-
-	<form id="updateForm" method="post"
-		action="${pageContext.request.contextPath}/employee/update.do">
-			<input type="hidden" name="id" id="inputId" value="${emp.employeeId}" />
-			<input type="hidden" name="target" id="inputTarget" />
-			<input type="hidden" name="value" id="inputValue" />
-
+	<form id="updateForm" method="post" action="${pageContext.request.contextPath}/employee/update.do">
+    <input type="hidden" name="id" id="inputId" value="${emp.employeeId}" />
+    <input type="hidden" name="target" id="inputTarget" />
+    <input type="hidden" name="value" id="inputValue" />
 		<div class="button-group" style="margin-top: 20px;">
 			<button id="btnCancel" class="btn-earn-pass">
 				<fmt:message key="empSelId.ButtonBack" />

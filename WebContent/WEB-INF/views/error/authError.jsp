@@ -15,28 +15,26 @@
   <link href="gmarket-sans.css" rel="stylesheet"> 
 </head>
 <body>
-<div class="error-container">
+  <div class="error-container">
     <img src="${pageContext.request.contextPath}/public/images/warning.png" alt="<fmt:message key='authError.AltText' />" class="warning-icon" />
-    
     <c:choose>
-        <c:when test="${not empty error}">
-            <h3 class="warning-title">${error}</h3>
-        </c:when>
-        <c:otherwise>
-            <h3 class="warning-title">
-                <fmt:message key="authError.UnknownMessage" />
-            </h3>
-        </c:otherwise>
+      <c:when test="${not empty error}">
+        <h3 class="warning-title">${error}</h3>
+      </c:when>
+      <c:otherwise>
+        <h3 class="warning-title">
+          <fmt:message key="authError.UnknownMessage" />
+        </h3>
+      </c:otherwise>
     </c:choose>
-    
     <div class="error-button-wrapper">
-        <button class="button-main" onclick="location.href='/login' ">
-            <fmt:message key="authError.ButtonLogin" />
-        </button>
-        <button class="button-main" onclick="location.href='/order' ">
-            <fmt:message key="authError.ButtonOrder" />
-        </button>
+      <button class="button-main" onclick="location.href='/login' ">
+        <fmt:message key="authError.ButtonLogin" />
+      </button>
+      <button class="button-main" onclick="location.href='/order' ">
+        <fmt:message key="authError.ButtonOrder" />
+      </button>
     </div>
-</div>
+  </div>
 </body>
 </html>

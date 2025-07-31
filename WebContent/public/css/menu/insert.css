@@ -30,16 +30,16 @@
 }
 
 .default_image {
-    width: 118px;
-    height: 118px;
-    border-radius: 16px;
-    background-color: #ddd;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 14px;
-    color: #666;
-    flex-shrink: 0;
+  width: 118px;
+  height: 118px;
+  border-radius: 16px;
+  background-color: #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  color: #666;
+  flex-shrink: 0;
 }
 
 .image-button {

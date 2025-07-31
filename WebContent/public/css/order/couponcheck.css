@@ -1,67 +1,55 @@
 @charset "UTF-8";
-.coupon_check{
-	margin-top:15%;
-	margin-left:20%;
-	justify-content: center;
+.coupon_check {
+  margin-top: 15%;
+  margin-left: 20%;
+  justify-content: center;
 }
+
 .membership-title {
-    font-weight: 700;
-    font-size: 25px;
-    line-height: 29px;
-    margin-bottom: 20px;
-  }
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 29px;
+  margin-bottom: 20px;
+}
 
-  .membership-desc {
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 23px;
-    margin-bottom: 10px;
-  }
+.membership-desc {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 23px;
+  margin-bottom: 10px;
+}
 
-  .phone-input-wrapper {
-    margin-top: 20px;
-    margin-bottom: 40px;
-    width: 430px;
-  }
+.phone-input-wrapper {
+  margin-top: 20px;
+  margin-bottom: 40px;
+  width: 430px;
+}
 
-  .phonenumber {
-    width: 100%;
-    height: 43px;
-    padding: 7px 15px;
-    font-size: 18px;
-    border: 1px solid var(--sidebar-bg);
-    border-radius: 8px;
-  }
+.phonenumber {
+  width: 100%;
+  height: 43px;
+  padding: 7px 15px;
+  font-size: 18px;
+  border: 1px solid var(--sidebar-bg);
+  border-radius: 8px;
+}
 
-  .button-group {
-    display: flex;
-    justify-content: center;
-    margin-right: 150px;
-    gap: 30px;
-  }
+.button-group {
+  display: flex;
+  justify-content: center;
+  margin-right: 150px;
+  gap: 30px;
+}
 
-  .btn-earn-points {
-    /* width: 225px;
-    height: 70px;
-    background: #F06A7E;
-    border:none;
-    border-radius: 20px;
-    color: #fff;
-    font-weight: 300;
-    font-size: 30px;
-    line-height: 35px;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center; */
-    width: 200px;
-    height: 55px;
-    background-color: #F06A7E;
-    border: none;
-    border-radius: 12px;
-    color: white;
-    font-size: 20px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.3s
-  }
+.btn-earn-points {
+  width: 200px;
+  height: 55px;
+  background-color: #f06a7e;
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
