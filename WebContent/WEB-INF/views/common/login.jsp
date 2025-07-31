@@ -5,7 +5,7 @@
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
   <div class="login-container">
     <div class="left-section">
-      <img class="login-logo" src="${pageContext.request.contextPath}/public/images/logo.png" alt="Javapresso" />
+      <img class="login-logo" src="${pageContext.request.contextPath}/images/logo.png" alt="Javapresso" />
       <span class="tagline"><fmt:message key="login.tagline" /></span>
     </div>
     <div class="right-section">

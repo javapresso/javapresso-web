@@ -15,7 +15,7 @@
 	</head>
 <body>
   <div class="error-container">
-    <img src="${pageContext.request.contextPath}/public/images/404error.png" 
+    <img src="${pageContext.request.contextPath}/images/404error.png" 
         alt="<fmt:message key='error404.AltText' />" class="sidebar_logo" />
     <button class="button-main" onclick="location.href='/' ">
       <fmt:message key="error404.ButtonHome" />

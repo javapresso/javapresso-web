@@ -25,7 +25,7 @@
     </div>
     <div class="rabbit-wrapper">
       <img class="rabbit-icon"
-          src="${pageContext.request.contextPath}/public/images/rabbit.png"
+          src="${pageContext.request.contextPath}/images/rabbit.png"
           alt="rabbit" />
     </div>
   </div>

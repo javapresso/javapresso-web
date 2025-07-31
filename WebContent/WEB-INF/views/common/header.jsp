@@ -39,7 +39,7 @@
   <header class="site-header">
     <div class="logo">
       <a href="${pageContext.request.contextPath}/">
-        <img src="${pageContext.request.contextPath}/public/images/logo.png" alt="Javapresso" />
+        <img src="${pageContext.request.contextPath}/images/logo.png" alt="Javapresso" />
       </a>
     </div>
 

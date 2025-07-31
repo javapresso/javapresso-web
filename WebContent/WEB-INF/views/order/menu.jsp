@@ -8,7 +8,7 @@
 <fmt:setBundle basename="messages" />
 <util:layout menuList="${sideMenus}">
   <header class="content_header">
-    <img class="content_logo" src="${pageContext.request.contextPath}/public/images/menuboardimg.png" alt="메뉴판">
+    <img class="content_logo" src="${pageContext.request.contextPath}/images/menuboardimg.png" alt="메뉴판">
   </header>
   <section class="content_categories">
     <div>

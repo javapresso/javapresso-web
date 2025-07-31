@@ -16,7 +16,7 @@
 </head>
 <body>
   <div class="error-container">
-    <img src="${pageContext.request.contextPath}/public/images/warning.png" alt="<fmt:message key='authError.AltText' />" class="warning-icon" />
+    <img src="${pageContext.request.contextPath}/images/warning.png" alt="<fmt:message key='authError.AltText' />" class="warning-icon" />
     <c:choose>
       <c:when test="${not empty error}">
         <h3 class="warning-title">${error}</h3>

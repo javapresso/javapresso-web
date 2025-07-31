@@ -16,7 +16,7 @@
 </head>
 <body>
   <div class="error-container">
-    <img src="${pageContext.request.contextPath}/public/images/warning.png" 
+    <img src="${pageContext.request.contextPath}/images/warning.png" 
         alt="<fmt:message key='runtimeError.AltText' />" class="warning-icon" />
     <c:choose>
       <c:when test="${not empty error}">
